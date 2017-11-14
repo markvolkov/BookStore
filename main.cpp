@@ -5,6 +5,6 @@
 #include <iostream>
 
 int main() {
-    std::cout << "Hello You stupid cunts" << std::endl;
+    std::cout << "I wish adi would come sloggin my noggin" << std::endl;
     return 0;
 }
