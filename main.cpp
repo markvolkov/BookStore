@@ -5,6 +5,5 @@
 #include <iostream>
 
 int main() {
-    std::cout << "I wish adi would come sloggin my noggin" << std::endl;
-    return 0;
+    std::cout << "porn hub"<<std::endl;
 }
