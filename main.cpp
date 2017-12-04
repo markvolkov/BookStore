@@ -3,11 +3,17 @@
 //
 
 #include <iostream>
-#include "map/ArrayMap.h"
+#include <fstream>
+#include "commands/CommandManager.h"
+
 using namespace std;
 
 int main() {
-    Map<string, string>* strings = new ArrayMap<string, string>();
-    strings->put("Hello", "World");
-    cout << "Hello " << strings->get("Hello") << endl;
+//    CommandManager commandManager;
+//    commandManager.loadCommands();
+
+    ofstream fileStream("test.txt");
+    fileStream << "test";
+    fileStream.close();
+
 }

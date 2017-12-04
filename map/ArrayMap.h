@@ -16,6 +16,7 @@ private:
     ArrayList<Item<K, V>*>* items;
 public:
     ArrayMap();
+    ~ArrayMap();
     V put(K key, V value);
     V get(K key);
     ArrayList<Item<K,V>*>* itemSet();

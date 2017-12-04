@@ -9,6 +9,14 @@ ArrayMap<K, V>::ArrayMap() {
     this->items = new ArrayList<Item<K, V>*>();
 };
 
+template<class K, class V>
+ArrayMap<K,V>::~ArrayMap() {
+    for (int i = 0; i < this->items->itemCount(); i++) {
+       // delete this->items->getValueAt(i);
+    }
+    delete this->items;
+}
+
 template <class K, class V>
 V ArrayMap<K, V>::put(K key, V value) {
     Item<K, V>* newItem = new Item<K, V>(key, value);
