@@ -16,7 +16,7 @@ CommandManager::~CommandManager() {
     for (int i = 0; i < this->commands->itemSet()->itemCount(); i++) {
         delete this->commands->itemSet()->getValueAt(i);
     }
-//    delete this->commands;
+    delete this->commands;
 }
 
 Command* CommandManager::getCommand(string identifer) {
