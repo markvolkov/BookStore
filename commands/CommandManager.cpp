@@ -28,10 +28,10 @@ bool CommandManager::addCommand(Command* command) {
     return true;
 }
 
-void CommandManager::executeCommand(string identifier) {
+void CommandManager::executeCommand(string identifier, string args[]) {
     Command* command = commands->get(identifier);
     if (command != nullptr) {
-        command->execute();
+        command->execute(args);
     }
 }
 

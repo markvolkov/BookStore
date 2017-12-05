@@ -14,7 +14,7 @@ std::string HCommand::toString() {
     return "All Help Displayed...";
 }
 
-void HCommand::execute() {
+void HCommand::execute(std::string args[]) {
     std::cout << toString() << std::endl;
 }
 

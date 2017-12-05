@@ -18,7 +18,7 @@ public:
     ~CommandManager();
     Command* getCommand(string identifer);
     bool addCommand(Command* command);
-    void executeCommand(string identifier);
+    void executeCommand(string identifier, string args[]);
     void loadCommands();
 };
 

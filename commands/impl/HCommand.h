@@ -18,7 +18,7 @@ public:
 
     std::string toString() override;
 
-    void execute() override;
+    void execute(std::string args[]) override;
 
 };
 #endif //BOOKSTORE_HCOMMAND_H
