@@ -24,11 +24,7 @@ Command* CommandManager::getCommand(string identifer) {
 }
 
 bool CommandManager::addCommand(Command* command) {
-    if (commands->get(command->identifier) != nullptr) {
-        cout << "That command already exists." << endl;
-        return false;
-    }
-    commands->put(command->identifier, command);
+    commands->put(command->getName(), command);
     return true;
 }
 

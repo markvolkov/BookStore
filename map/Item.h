@@ -5,7 +5,7 @@
 #ifndef HASHMAP_ITEM_H
 #define HASHMAP_ITEM_H
 
-//TODO: Figure out how to delete key or value if they're on the heap
+//TDO: Figure out how to delete key or value if they're on the heap
 template <class K, class V>
 class Item {
 private:

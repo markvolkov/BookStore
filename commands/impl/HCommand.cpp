@@ -19,3 +19,7 @@ void HCommand::execute() {
 }
 
 
+std::string HCommand::getName() {
+    return this->identifier;
+}
+

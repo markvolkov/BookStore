@@ -14,6 +14,8 @@ public:
     HCommand();
     HCommand(std::string identifier);
 
+    std::string getName() override;
+
     std::string toString() override;
 
     void execute() override;

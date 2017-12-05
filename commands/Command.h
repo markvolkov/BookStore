@@ -8,12 +8,13 @@
 
 class Command {
 
-public:
+private:
     std::string identifier;
-    Command();
-    Command(std::string identifier);
+
+public:
     virtual std::string toString()=0;
     virtual void execute()=0;
+    virtual std::string getName()=0;
 };
 
 #endif //BOOKSTORE_COMMAND_H
