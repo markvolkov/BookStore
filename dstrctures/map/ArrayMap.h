@@ -6,7 +6,7 @@
 #define HASHMAP_HASHMAP_H
 
 #include "Map.h"
-#include "ArrayList.h"
+#include "../list/ArrayList.h"
 #include "Item.h"
 
 template <class K, class V>
