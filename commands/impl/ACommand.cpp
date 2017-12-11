@@ -19,6 +19,11 @@ std::string ACommand::toString() {
 }
 
 void ACommand::execute(std::string *args) {
+    std::cout<<"Add a book to the system."<<std::endl;
+    std::string bookTitle = std::cin>>"Enter book title";
+    int bookStock = std::cin>>"Enter book stock";
+    int bookNeed = std::cin>>"Enter book need";
+
 
 }
 
