@@ -6,8 +6,8 @@ using namespace std;
 #ifndef BOOKSTORE_COMMANDMANAGER_H
 #define BOOKSTORE_COMMANDMANAGER_H
 
-#include "../map/ArrayMap.h"
 #include "Command.h"
+#include "../dstrctures/map/Map.h"
 
 class CommandManager {
 

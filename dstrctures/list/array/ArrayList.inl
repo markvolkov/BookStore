@@ -134,28 +134,5 @@ void ArrayList<T>::doubleCapacity() {
     newArray = nullptr;
 }
 
-std::string toStringR(const int *const arrayPtr, const int size, int index, std::string value);
-std::string toStringStub(const int *const arrayPtr, const int size);
-
-template <class T>
-std::string toStringR(const int *const arrayPtr, const int size, int index, std::string value) {
-    if (index > (size - 1)) {
-        return value + "}";
-    } else if (index == 0) {
-        return toStringR(arrayPtr, size, index+1, value + std::to_string(arrayPtr[index]));
-    } else {
-        return toStringR(arrayPtr, size, index+1, value + ", " + std::to_string(arrayPtr[index]));
-    }
-}
-
-template <class T>
-std::string toString(const int *const arrayPtr, const int size) {
-    return toStringR(arrayPtr, size, 0, "{");
-}
-
-template <class T>
-std::string ArrayList<T>::toString() {
-    return toStringStub(array, currItemCount);
-}
 
 

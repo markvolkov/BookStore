@@ -4,6 +4,9 @@
 
 #include "ICommand.h"
 //Display all information for a specified title.
+ICommand::ICommand(std::string identifier) {
+    this->identifier = identifier;
+}
 
 std::string ICommand::toString() {
     return nullptr;

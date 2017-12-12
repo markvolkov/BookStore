@@ -6,9 +6,10 @@
 #define LAB9ALLFILES_ARRAYLIST_H
 
 #include <string>
+#include "../List.h"
 
 template <class T>
-class ArrayList {
+class ArrayList : public List<T> {
 private:
     T* array;
     int currItemCount;
@@ -34,8 +35,6 @@ public:
     int itemCount();
 
     void clearList();
-
-    std::string toString();
 
     ~ArrayList();
 

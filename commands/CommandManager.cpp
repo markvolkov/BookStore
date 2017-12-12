@@ -5,6 +5,12 @@
 #include <iostream>
 #include "CommandManager.h"
 #include "./impl/HCommand.h"
+#include "./impl/ACommand.h"
+#include "./impl/ICommand.h"
+#include "./impl/MCommand.h"
+#include "./impl/SCommand.h"
+#include "../dstrctures/map/ArrayMap.h"
+
 using namespace std;
 
 CommandManager::CommandManager() {
@@ -37,8 +43,12 @@ void CommandManager::executeCommand(string identifier, string args[]) {
 
 void CommandManager::loadCommands() {
     //Help Command ('h', 'H')
-    Command* helpCommand = new HCommand("h");
-    addCommand(helpCommand);
+    addCommand(new HCommand("h"));
+    addCommand(new ACommand("a"));
+    addCommand(new ICommand("i"));
+    addCommand(new MCommand("m"));
+    addCommand(new SCommand("s"));
+
 
 
 }
