@@ -9,7 +9,8 @@ ICommand::ICommand(std::string identifier) {
 }
 
 std::string ICommand::toString() {
-    return nullptr;
+    std::string iString = "I - Command: Inquire Information";
+    return iString;
 }
 
 void ICommand::execute(std::string args[]){

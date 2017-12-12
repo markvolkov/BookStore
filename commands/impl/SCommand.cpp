@@ -13,8 +13,8 @@ SCommand::SCommand(std::string identifier) {
 }
 
 std::string SCommand::toString() {
-    return std::string();
-}
+    std::string sString = "S - Command: Sell Book";
+    return sString;}
 
 void SCommand::execute(std::string *args) {
 

@@ -10,7 +10,8 @@ LCommand::LCommand(std::string identifier){
 }
 
 std::string LCommand::toString() {
-    return "All Titles Displayed...";
+    std::string lString = "L - Command: List Books";
+    return lString;
 }
 
 //loop thru book array and print out titles in alphabetical order

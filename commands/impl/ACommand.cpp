@@ -15,17 +15,18 @@ ACommand::ACommand(std::string identifier) {
 }
 
 std::string ACommand::toString() {
-    std::cout<<"Please enter the title of the book, the count, the want, all seperated by Commas"<<std::endl;
-    execute(;
+    std::string aString = "A - Command: Add Book";
+    return aString;
 }
 
 void ACommand::execute(std::string *args) {
-    std::string title;
-    getline(std::cin, title);
-    std::string want;
-    getline(std::cin, want);
-    std::string need;
-    getline(std::cin,need);
+    std::string title =args [0];
+    std::string wantStr =args [1];
+    std::string needStr =args [2];
+//    int* want = new int(wantStr);
+//    int* need = new int(needStr);
+//    BookManager.createBook.create
+
 
 
 

@@ -15,7 +15,8 @@ DCommand::DCommand(std::string identifier) {
 }
 
 std::string DCommand::toString() {
-    return std::string();
+    std::string dString = "D - Command: Delivery Of Books";
+    return dString;
 }
 
 void DCommand::execute(std::string *args) {

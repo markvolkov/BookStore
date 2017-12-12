@@ -11,7 +11,8 @@ HCommand::HCommand(std::string identifier){
 }
 
 std::string HCommand::toString() {
-    return "All Help Displayed...";
+    std::string hString = "H - Command: Help";
+    return hString;
 }
 
 void HCommand::execute(std::string args[]) {

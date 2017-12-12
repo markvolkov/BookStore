@@ -14,7 +14,8 @@ OCommand::OCommand(std::string identifier) {
 }
 
 std::string OCommand::toString() {
-    return std::string();
+    std::string oString = "O - Command: Order Books";
+    return oString;
 }
 
 void OCommand::execute(std::string *args) {
