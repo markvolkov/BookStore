@@ -15,10 +15,19 @@ ACommand::ACommand(std::string identifier) {
 }
 
 std::string ACommand::toString() {
-    return std::string();
+    std::cout<<"Please enter the title of the book, the count, the want, all seperated by Commas"<<std::endl;
+    execute(;
 }
 
 void ACommand::execute(std::string *args) {
+    std::string title;
+    getline(std::cin, title);
+    std::string want;
+    getline(std::cin, want);
+    std::string need;
+    getline(std::cin,need);
+
+
 
 }
 
