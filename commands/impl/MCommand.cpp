@@ -4,9 +4,7 @@
 
 #include "MCommand.h"
 
-MCommand::MCommand() {
 
-}
 
 MCommand::MCommand(std::string identifier) {
 

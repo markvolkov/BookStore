@@ -11,7 +11,6 @@ class ICommand :public Command{
 private:
     std::string identifier;
 public:
-    ICommand();
     ICommand(std::string identifier);
 
     std::string toString() override;

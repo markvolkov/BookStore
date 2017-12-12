@@ -10,7 +10,6 @@ class SCommand : public Command {
 private:
     std::string identifier;
 public:
-    SCommand();
     SCommand(std::string identifier);
 
     std::string toString() override;

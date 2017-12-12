@@ -5,9 +5,7 @@
 #include "OCommand.h"
 //Create a bulk purchase order for additional books based on a comparison of the have and want values in the inventory.
 
-OCommand::OCommand() {
 
-}
 
 OCommand::OCommand(std::string identifier) {
 

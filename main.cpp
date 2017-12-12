@@ -7,22 +7,20 @@
 #include <sstream>
 #include "commands/CommandManager.h"
 
-using namespace std;
-
 //TODO: Implement BookManager
 int main() {
     CommandManager commandManager;
     commandManager.loadCommands();
 
-    cout << "Welcome to your BookStore management system...." << endl;
-    cout << "Please type 'h' for a list of available commands" << endl;
+    std::cout << "Welcome to your BookStore management system...." << std::endl;
+    std::cout << "Please type 'h' for a list of available commands" << std::endl;
     bool running = true;
     while(running) {
-        string line;
-        getline(cin, line);
-        stringstream arguments(line);
+        std::string line;
+        getline(std::cin, line);
+        std::stringstream arguments(line);
         while(arguments) {
-            string part;
+            std::string part;
 
         }
 
@@ -31,12 +29,12 @@ int main() {
 
 }
 
-vector<string> explode(const string& str, const char& ch) {
-    string next;
-    vector<string> result;
+std::vector<std::string> explode(const std::string& str, const char& ch) {
+    std::string next;
+    std::vector<std::string> result;
 
     // For each character in the string
-    for (string::const_iterator it = str.begin(); it != str.end(); it++) {
+    for (std::string::const_iterator it = str.begin(); it != str.end(); it++) {
         // If we've hit the terminal character
         if (*it == ch) {
             // If we have some characters accumulated

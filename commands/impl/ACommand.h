@@ -10,7 +10,6 @@ class ACommand : public Command{
 private:
     std::string identifier;
 public:
-    ACommand();
     ACommand(std::string identifier);
 
     std::string toString() override;

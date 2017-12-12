@@ -6,10 +6,6 @@
 //Add a book to the inventory. Prompt for initial want value and have value.
 //If the title already exists, inform the user and print the information for that title.
 
-ACommand::ACommand() {
-
-}
-
 ACommand::ACommand(std::string identifier) {
 
 }

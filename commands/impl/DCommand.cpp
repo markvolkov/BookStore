@@ -6,9 +6,6 @@
 //Take information from a file listing the delivery shipment of books.
 //The file will contain the title and the count of each book included in the shipment.
 
-DCommand::DCommand() {
-
-}
 
 DCommand::DCommand(std::string identifier) {
 

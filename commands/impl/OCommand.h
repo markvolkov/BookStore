@@ -10,7 +10,6 @@ class OCommand :public Command{
 private:
     std::string identifier;
 public:
-    OCommand();
     OCommand(std::string identifier);
 
     std::string toString() override;

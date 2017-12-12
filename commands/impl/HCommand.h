@@ -11,7 +11,6 @@ class HCommand : public Command {
 private:
     std::string identifier;
 public:
-    HCommand();
     HCommand(std::string identifier);
 
     std::string getName() override;
