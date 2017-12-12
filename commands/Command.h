@@ -5,6 +5,7 @@
 #define BOOKSTORE_COMMAND_H
 
 #include <iostream>
+#include <vector>
 
 class Command {
 
@@ -13,7 +14,7 @@ private:
 
 public:
     virtual std::string toString()=0;
-    virtual void execute(std::string args[])=0;
+    virtual void execute(std::vector<std::string> args)=0;
     virtual std::string getName()=0;
 };
 

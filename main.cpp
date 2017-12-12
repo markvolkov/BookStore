@@ -9,43 +9,48 @@
 
 using namespace std;
 
-string* split(const string& s, char delimiter)
-{
-    int size = s.length();
-    string* args = new string[s.length()];
-    int count = 0;
-    for (int i = 0; i < size; i++) {
-        if (s[i] == delimiter) continue;
-        args[count] = s[i];
-        count++;
-    }
-    return args;
-}
-
+//TODO: Implement BookManager
 int main() {
     CommandManager commandManager;
     commandManager.loadCommands();
-    //TODO: Implement BookManager
 
+    cout << "Welcome to your BookStore management system...." << endl;
+    cout << "Please type 'h' for a list of available commands" << endl;
     bool running = true;
     while(running) {
         string line;
         getline(cin, line);
+        stringstream arguments(line);
+        while(arguments) {
+            string part;
 
-        if (line == "quit" || line == "q") {
-            running = false;
-        } else {
-            string* args = split(line, ' ');
-            if (args->length() == 1) {
-//                commandManager.executeCommand(args[0], nullptr);
-                cout << args[0] << endl;
-            } else {
-//                commandManager.executeCommand(args[0], split(args[1], ' '));
-                cout << args[0] + " " << split(args[1], ' ') << endl;
-            }
         }
 
     }
 
 
+}
+
+vector<string> explode(const string& str, const char& ch) {
+    string next;
+    vector<string> result;
+
+    // For each character in the string
+    for (string::const_iterator it = str.begin(); it != str.end(); it++) {
+        // If we've hit the terminal character
+        if (*it == ch) {
+            // If we have some characters accumulated
+            if (!next.empty()) {
+                // Add them to the result vector
+                result.push_back(next);
+                next.clear();
+            }
+        } else {
+            // Accumulate the next character into the sequence
+            next += *it;
+        }
+    }
+    if (!next.empty())
+        result.push_back(next);
+    return result;
 }

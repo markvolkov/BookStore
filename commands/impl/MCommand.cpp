@@ -16,7 +16,7 @@ std::string MCommand::toString() {
     std::string mString = "M - Command: Modify Want Value";
     return mString;}
 
-void MCommand::execute(std::string *args) {
+void MCommand::execute(std::vector<std::string> args) {
 
 }
 

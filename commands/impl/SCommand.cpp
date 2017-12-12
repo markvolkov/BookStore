@@ -16,7 +16,7 @@ std::string SCommand::toString() {
     std::string sString = "S - Command: Sell Book";
     return sString;}
 
-void SCommand::execute(std::string *args) {
+void SCommand::execute(std::vector<std::string> args) {
 
 }
 

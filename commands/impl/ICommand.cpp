@@ -13,7 +13,7 @@ std::string ICommand::toString() {
     return iString;
 }
 
-void ICommand::execute(std::string args[]){
+void ICommand::execute(std::vector<std::string> args){
     std::string title = args[0];
 //    bookManager.getBook(title).getinformation();
 }

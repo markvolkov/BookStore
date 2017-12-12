@@ -18,7 +18,7 @@ public:
 
     std::string toString() override;
 
-    void execute(std::string args[]) override;
+    void execute(std::vector<std::string> args) override;
 
 };
 

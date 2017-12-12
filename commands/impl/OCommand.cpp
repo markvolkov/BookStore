@@ -18,7 +18,7 @@ std::string OCommand::toString() {
     return oString;
 }
 
-void OCommand::execute(std::string *args) {
+void OCommand::execute(std::vector<std::string> args) {
 
 }
 

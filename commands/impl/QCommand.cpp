@@ -17,7 +17,7 @@ std::string QCommand::toString() {
     return qString;
 }
 
-void QCommand::execute(std::string *args) {
+void QCommand::execute(std::vector<std::string> args) {
 
 }
 

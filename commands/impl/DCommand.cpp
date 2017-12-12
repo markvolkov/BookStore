@@ -19,7 +19,7 @@ std::string DCommand::toString() {
     return dString;
 }
 
-void DCommand::execute(std::string *args) {
+void DCommand::execute(std::vector<std::string> args) {
 
 }
 

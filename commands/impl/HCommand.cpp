@@ -15,7 +15,7 @@ std::string HCommand::toString() {
     return hString;
 }
 
-void HCommand::execute(std::string args[]) {
+void HCommand::execute(std::vector<std::string> args) {
     std::cout << toString() << std::endl;
 }
 

@@ -18,7 +18,7 @@ std::string RCommand::toString() {
 }
 
 
-void RCommand::execute(std::string *args) {
+void RCommand::execute(std::vector<std::string> args) {
 
 }
 
