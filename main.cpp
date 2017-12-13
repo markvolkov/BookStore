@@ -49,6 +49,7 @@ void prompt(CommandManager *commandManager) {
         if (toExecute != nullptr) {
             if (args.size()-1 != toExecute->argumentCount()) {
                 std::cout << "Invalid arguments..." << std::endl;
+                std::cout << toExecute->toString() << std::endl;
                 args.erase(args.begin());
                 prompt(commandManager);
             } else {
