@@ -7,29 +7,7 @@
 #include <sstream>
 #include "commands/CommandManager.h"
 
-//TODO: Implement BookManager
-int main() {
-    CommandManager commandManager;
-    commandManager.loadCommands();
-
-    std::cout << "Welcome to your BookStore management system...." << std::endl;
-    std::cout << "Please type 'h' for a list of available commands" << std::endl;
-    bool running = true;
-    while(running) {
-        std::string line;
-        getline(std::cin, line);
-        std::stringstream arguments(line);
-        while(arguments) {
-            std::string part;
-
-        }
-
-    }
-
-
-}
-
-std::vector<std::string> explode(const std::string& str, const char& ch) {
+std::vector<std::string> explode(const std::string &str, const char &ch) {
     std::string next;
     std::vector<std::string> result;
 
@@ -52,3 +30,47 @@ std::vector<std::string> explode(const std::string& str, const char& ch) {
         result.push_back(next);
     return result;
 }
+
+void prompt(CommandManager *commandManager) {
+    std::cout << "\nPlease type 'h' for a list of available commands, or 'q' to exit\n" << std::endl;
+    std::string line;
+    getline(std::cin, line);
+    std::vector<std::string> args = explode(line, ' ');
+    int size = args.size();
+    std::string command;
+    while (args.size() == size) {
+        command = args[0];
+        if (command == "q" || command == "quit") {
+            delete commandManager;
+            commandManager = nullptr;
+            return;
+        }
+        Command* toExecute = commandManager->getCommand(command);
+        if (toExecute != nullptr) {
+            if (args.size()-1 != toExecute->argumentCount()) {
+                std::cout << "Invalid arguments..." << std::endl;
+                args.erase(args.begin());
+                prompt(commandManager);
+            } else {
+                args.erase(args.begin());
+                commandManager->executeCommand(command, args);
+                prompt(commandManager);
+            }
+        } else {
+            std::cout << "That command doesn't exist!" << std::endl;
+            args.erase(args.begin());
+            prompt(commandManager);
+        }
+    }
+}
+
+int main() {
+    CommandManager *commandManager = new CommandManager();
+    commandManager->loadCommands();
+
+    std::cout << "Welcome to your BookStore management system....";
+    prompt(commandManager);
+    return 0;
+
+}
+

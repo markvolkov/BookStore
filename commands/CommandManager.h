@@ -1,26 +1,24 @@
 //
 // Created by Mark Volkov on 11/28/17.
 //
+using namespace std;
 
 #ifndef BOOKSTORE_COMMANDMANAGER_H
 #define BOOKSTORE_COMMANDMANAGER_H
 
 #include "Command.h"
 #include "../dstrctures/map/Map.h"
-//#include "../dstrctures/map/Item.h"
-//#include "../dstrctures/list/array/ArrayList.h"
 
 class CommandManager {
 
 private:
-    static Map<std::string, Command*>* commands;
+    Map<string, Command*>* commands;
 public:
     CommandManager();
     ~CommandManager();
-    Command* getCommand(std::string identifer);
+    Command* getCommand(string identifer);
     bool addCommand(Command* command);
-    void executeCommand(std::string identifier, std::vector<std::string> args);
-    static ArrayList<Item<std::string, Command*>*>* getCommands();
+    void executeCommand(string identifier, vector<string> args);
     void loadCommands();
 };
 

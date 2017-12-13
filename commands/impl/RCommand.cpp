@@ -4,7 +4,9 @@
 
 #include "RCommand.h"
 
+RCommand::RCommand() {
 
+}
 
 RCommand::RCommand(std::string identifier) {
 

@@ -15,9 +15,14 @@ std::string ICommand::toString() {
 
 void ICommand::execute(std::vector<std::string> args){
     std::string title = args[0];
+    std::cout << "Inquire: " << title << std::endl;
 //    bookManager.getBook(title).getinformation();
 }
 
 std::string ICommand::getName() {
-    return nullptr;
+    return identifier;
+}
+
+int ICommand::argumentCount() {
+    return 1;
 }

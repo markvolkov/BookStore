@@ -4,20 +4,17 @@
 
 #include <iostream>
 #include "CommandManager.h"
-#include "./impl/ACommand.h"
-#include "./impl/DCommand.h"
 #include "./impl/HCommand.h"
+#include "./impl/ACommand.h"
 #include "./impl/ICommand.h"
-#include "./impl/LCommand.h"
 #include "./impl/MCommand.h"
-#include "./impl/OCommand.h"
-#include "./impl/QCommand.h"
-#include "./impl/RCommand.h"
 #include "./impl/SCommand.h"
 #include "../dstrctures/map/ArrayMap.h"
 
+using namespace std;
+
 CommandManager::CommandManager() {
-    this->commands = new ArrayMap<std::string, Command*>();
+    this->commands = new ArrayMap<string, Command*>();
 }
 
 //TODO: Check Item Class
@@ -28,8 +25,13 @@ CommandManager::~CommandManager() {
     delete this->commands;
 }
 
-Command* CommandManager::getCommand(std::string identifer) {
-    return commands->get(identifer);
+Command* CommandManager::getCommand(string identifer) {
+    try {
+        Command* command = commands->get(identifer);
+        return command;
+    } catch (std::out_of_range e) {
+        return nullptr;
+    }
 }
 
 bool CommandManager::addCommand(Command* command) {
@@ -37,28 +39,30 @@ bool CommandManager::addCommand(Command* command) {
     return true;
 }
 
-void CommandManager::executeCommand(std::string identifier, std::vector<std::string> args) {
+void CommandManager::executeCommand(string identifier, vector<string> args) {
     Command* command = commands->get(identifier);
     if (command != nullptr) {
         command->execute(args);
     }
 }
 
-ArrayList<Item<std::string, Command*>*>* CommandManager::getCommands() {
-    return commands->itemSet();
-}
-
 void CommandManager::loadCommands() {
     //Help Command ('h', 'H')
-    addCommand(new ACommand("a"));
-    addCommand(new DCommand("d"));
-    addCommand(new HCommand("h"));
-    addCommand(new ICommand("i"));
-    addCommand(new LCommand("l"));
-    addCommand(new MCommand("m"));
-    addCommand(new OCommand("o"));
-    addCommand(new QCommand("q"));
-    addCommand(new RCommand("r"));
-    addCommand(new SCommand("s"));
+    Command* hCommand = new HCommand("h");
+    addCommand(hCommand);
+
+    Command* aCommand = new ACommand("a");
+    addCommand(aCommand);
+
+    Command* iCommand = new ICommand("i");
+    addCommand(iCommand);
+
+    Command* mCommand = new MCommand("m");
+    addCommand(mCommand);
+
+    Command* sCommand = new SCommand("s");
+    addCommand(sCommand);
+
+
 
 }

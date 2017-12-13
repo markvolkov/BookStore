@@ -15,6 +15,8 @@ public:
 
     std::string getName() override;
 
+    int argumentCount() override;
+
     std::string toString() override;
 
     void execute(std::vector<std::string> args) override;

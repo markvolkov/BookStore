@@ -4,10 +4,8 @@
 
 #include "MCommand.h"
 
-
-
 MCommand::MCommand(std::string identifier) {
-
+    this->identifier = identifier;
 }
 
 std::string MCommand::toString() {
@@ -20,4 +18,8 @@ void MCommand::execute(std::vector<std::string> args) {
 
 std::string MCommand::getName() {
     return std::string();
+}
+
+int MCommand::argumentCount() {
+    return 0;
 }

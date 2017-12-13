@@ -6,7 +6,11 @@
 
 
 SCommand::SCommand(std::string identifier) {
+    this->identifier = identifier;
+}
 
+int SCommand::argumentCount() {
+    return 0;
 }
 
 std::string SCommand::toString() {

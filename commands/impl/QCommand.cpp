@@ -4,6 +4,9 @@
 
 #include "QCommand.h"
 
+QCommand::QCommand() {
+
+}
 
 QCommand::QCommand(std::string identifier) {
 

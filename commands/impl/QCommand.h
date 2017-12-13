@@ -11,6 +11,7 @@ class QCommand :public Command{
 private:
     std::string identifier;
 public:
+    QCommand();
     QCommand(std::string identifier);
 
     std::string toString() override;

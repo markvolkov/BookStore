@@ -6,14 +6,15 @@
 #define BOOKSTORE_ACOMMAND_H
 
 #include "../Command.h"
-class ACommand : public Command{
+class ACommand : public Command {
 private:
     std::string identifier;
 public:
+    ACommand();
     ACommand(std::string identifier);
 
     std::string toString() override;
-
+    int argumentCount() override;
     void execute(std::vector<std::string> args) override;
 
     std::string getName() override;

@@ -1,10 +1,10 @@
-//
-// Created by brien pacholec on 12/5/17.
-//
+
 
 #include "LCommand.h"
 
-
+LCommand::LCommand() {
+    this->identifier = "error";
+}
 LCommand::LCommand(std::string identifier){
     this->identifier = identifier;
 }

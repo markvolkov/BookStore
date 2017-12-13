@@ -10,10 +10,11 @@ class MCommand :public Command{
 private:
     std::string identifier;
 public:
-    MCommand();
     MCommand(std::string identifier);
 
     std::string toString() override;
+
+    int argumentCount() override;
 
     void execute(std::vector<std::string> args) override;
 

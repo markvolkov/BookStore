@@ -10,6 +10,7 @@ class RCommand : public Command {
 private:
     std::string identifier;
 public:
+    RCommand();
     RCommand(std::string identifier);
 
     std::string toString() override;
