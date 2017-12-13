@@ -13,13 +13,10 @@ private:
 public:
     DCommand();
     DCommand(std::string identifier);
-
-
     std::string toString() override;
-
     void execute(std::vector<std::string> args) override;
-
     std::string getName() override;
+    int argumentCount() override;
 };
 
 

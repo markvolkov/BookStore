@@ -6,12 +6,10 @@
 //Take information from a file listing the delivery shipment of books.
 //The file will contain the title and the count of each book included in the shipment.
 
-DCommand::DCommand() {
 
-}
 
 DCommand::DCommand(std::string identifier) {
-
+    this->identifier = identifier;
 }
 
 std::string DCommand::toString() {
@@ -20,9 +18,14 @@ std::string DCommand::toString() {
 }
 
 void DCommand::execute(std::vector<std::string> args) {
+    std::cout<<"D - COMMAND EXECUTED"<<std::endl;
+}
 
+int DCommand::argumentCount() {
+    return 0;
 }
 
 std::string DCommand::getName() {
-    return std::string();
+    return this->identifier;
 }
+

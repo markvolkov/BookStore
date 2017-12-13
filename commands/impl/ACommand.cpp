@@ -23,7 +23,7 @@ void ACommand::execute(std::vector<std::string> args) {
 //    int* want = new int(wantStr);
 //    int* need = new int(needStr);
 //    BookManager.createBook.create
-    std::cout << "A COMMAND EXECUTED" << std::endl;
+    std::cout << "A-COMMAND EXECUTED" << std::endl;
 
 
 

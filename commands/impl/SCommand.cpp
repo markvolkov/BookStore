@@ -18,7 +18,7 @@ std::string SCommand::toString() {
     return sString;}
 
 void SCommand::execute(std::vector<std::string> args) {
-
+    std::cout<<toString()<<std::endl;
 }
 
 std::string SCommand::getName() {

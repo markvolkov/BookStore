@@ -4,11 +4,21 @@
 
 #include <iostream>
 #include "CommandManager.h"
-#include "./impl/HCommand.h"
 #include "./impl/ACommand.h"
+#include "./impl/DCommand.h"
+#include "./impl/HCommand.h"
 #include "./impl/ICommand.h"
+#include "./impl/LCommand.h"
 #include "./impl/MCommand.h"
+#include "./impl/OCommand.h"
+#include "./impl/QCommand.h"
+#include "./impl/RCommand.h"
 #include "./impl/SCommand.h"
+
+
+
+
+
 #include "../dstrctures/map/ArrayMap.h"
 
 using namespace std;
@@ -48,18 +58,26 @@ void CommandManager::executeCommand(string identifier, vector<string> args) {
 
 void CommandManager::loadCommands() {
     //Help Command ('h', 'H')
-    Command* hCommand = new HCommand("h");
-    addCommand(hCommand);
+
 
     Command* aCommand = new ACommand("a");
     addCommand(aCommand);
-
+    Command* dCommand = new DCommand("d");
+    addCommand(dCommand);
+    Command* hCommand = new HCommand("h");
+    addCommand(hCommand);
     Command* iCommand = new ICommand("i");
     addCommand(iCommand);
-
+    Command* lCommand = new LCommand("l");
+    addCommand(lCommand);
     Command* mCommand = new MCommand("m");
     addCommand(mCommand);
-
+    Command* oCommand = new OCommand("o");
+    addCommand(oCommand);
+    Command* qCommand = new QCommand("q");
+    addCommand(qCommand);
+    Command* rCommand = new RCommand("r");
+    addCommand(rCommand);
     Command* sCommand = new SCommand("s");
     addCommand(sCommand);
 

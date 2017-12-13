@@ -25,3 +25,7 @@ void RCommand::execute(std::vector<std::string> args) {
 std::string RCommand::getName() {
     return std::string();
 }
+
+int RCommand::argumentCount() {
+    return 0;
+}

@@ -25,3 +25,6 @@ void OCommand::execute(std::vector<std::string> args) {
 std::string OCommand::getName() {
     return std::string();
 }
+int OCommand::argumentCount() {
+    return 0;
+}

@@ -24,3 +24,7 @@ void QCommand::execute(std::vector<std::string> args) {
 std::string QCommand::getName() {
     return std::string();
 }
+
+int QCommand::argumentCount() {
+    return 0;
+}

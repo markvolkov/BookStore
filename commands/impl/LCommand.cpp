@@ -23,3 +23,7 @@ void LCommand::execute(std::vector<std::string> args) {
 std::string LCommand::getName() {
     return this->identifier;
 }
+
+int LCommand::argumentCount() {
+    return 0;
+}
