@@ -31,7 +31,7 @@ void ACommand::execute(std::vector<std::string> args) {
 }
 
 int ACommand::argumentCount() {
-    return 0;
+    return 1;
 }
 
 std::string ACommand::getName() {

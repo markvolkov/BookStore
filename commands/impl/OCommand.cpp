@@ -26,5 +26,5 @@ std::string OCommand::getName() {
     return std::string();
 }
 int OCommand::argumentCount() {
-    return 0;
+    return 1;
 }

@@ -21,5 +21,5 @@ std::string MCommand::getName() {
 }
 
 int MCommand::argumentCount() {
-    return 0;
+    return 1;
 }

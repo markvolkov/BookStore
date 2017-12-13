@@ -10,7 +10,7 @@ SCommand::SCommand(std::string identifier) {
 }
 
 int SCommand::argumentCount() {
-    return 0;
+    return 1;
 }
 
 std::string SCommand::toString() {

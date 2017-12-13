@@ -27,5 +27,5 @@ std::string RCommand::getName() {
 }
 
 int RCommand::argumentCount() {
-    return 0;
+    return 1;
 }
