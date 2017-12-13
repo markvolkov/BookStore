@@ -8,9 +8,9 @@
 #include "../Queue.h"
 #include "../../list/linked/LinkedList.h"
 template<class T>
-class LinkedQueue : public Queue {
+class LinkedQueue : public Queue<T> {
 private:
-    LinkedList* list;
+    LinkedList<T>* list;
 public:
     LinkedQueue();
     ~LinkedQueue() override;

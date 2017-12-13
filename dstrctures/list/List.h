@@ -20,8 +20,6 @@ public:
 
     virtual T removeValueAt(int index)=0;
 
-    virtual void doubleCapacity()=0;
-
     virtual bool isEmpty()=0;
 
     virtual int itemCount()=0;

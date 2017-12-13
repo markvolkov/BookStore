@@ -10,7 +10,7 @@
 template<class T>
 class LinkedList : public List<T> {
 private:
-    LinkedNode* top;
+    LinkedNode<T>* top;
     int nodeCount;
 public:
     LinkedList();
@@ -25,7 +25,7 @@ public:
 
     T getValueAt(int index) override;
 
-    int removeValueAt(int index) override;
+    T removeValueAt(int index) override;
 
     bool isEmpty() override;
 

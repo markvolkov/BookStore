@@ -11,19 +11,24 @@
  */
 
 template<class T>
-LinkedList::LinkedList() {
+LinkedList<T>::LinkedList() {
     top = nullptr;
     nodeCount = 0;
 }
 
 template<class T>
-LinkedList::LinkedList(const LinkedList &copyLinkedList) {
+LinkedList<T>::LinkedList(const LinkedList &copyLinkedList) {
     top = copyLinkedList.top;
     nodeCount = copyLinkedList.nodeCount;
 }
 
 template<class T>
-LinkedList& LinkedList::operator=(const LinkedList &linkedList) {
+LinkedList<T>::~LinkedList() {
+    
+}
+
+template<class T>
+LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T> &linkedList) {
     if (this != &linkedList) {
         top = linkedList.top;
         nodeCount = linkedList.nodeCount;
@@ -32,31 +37,31 @@ LinkedList& LinkedList::operator=(const LinkedList &linkedList) {
 }
 
 template<class T>
-void LinkedList::insertAtEnd(T itemToAdd) {
+void LinkedList<T>::insertAtEnd(T itemToAdd) {
     insertAt(itemToAdd, nodeCount);
 }
 
 template<class T>
-void LinkedList::insertAtFront(T itemToAdd) {
+void LinkedList<T>::insertAtFront(T itemToAdd) {
     insertAt(itemToAdd, 0);
 }
 
 template<class T>
-void LinkedList::insertAt(T itemToAdd, int index) {
+void LinkedList<T>::insertAt(T itemToAdd, int index) {
     if (index > nodeCount) {
         throw std::out_of_range("Index cannot exceed linkedlist size.");
     }
     if (top == nullptr) {
-        top = new LinkedNode(itemToAdd);
+        top = new LinkedNode<T>(itemToAdd);
         nodeCount++;
     } else {
-        LinkedNode* newData = new LinkedNode(itemToAdd);
+        LinkedNode<T>* newData = new LinkedNode<T>(itemToAdd);
         if (index == 0) {
             newData->setNext(top);
             top = newData;
             nodeCount++;
         } else {
-            LinkedNode* temp = top;
+            LinkedNode<T>* temp = top;
             int count = 0;
             while (count != index-1) {
                 temp = temp->getNext();
@@ -72,14 +77,14 @@ void LinkedList::insertAt(T itemToAdd, int index) {
 }
 
 template<class T>
-T LinkedList::getValueAt(int index) {
+T LinkedList<T>::getValueAt(int index) {
     if (isEmpty()) {
         throw std::out_of_range("LinkedList is empty!");
     } else if (index > itemCount()-1) {
         throw std::out_of_range("Index out of bounds.");
     } else {
         int count = 0;
-        LinkedNode* temp = top;
+        LinkedNode<T>* temp = top;
         while(count != index) {
             temp = temp->getNext();
             count++;
@@ -89,7 +94,7 @@ T LinkedList::getValueAt(int index) {
 }
 
 template<class T>
-T LinkedList::removeValueAt(int index) {
+T LinkedList<T>::removeValueAt(int index) {
     if (isEmpty()) {
         throw std::out_of_range("LinkedList is empty!");
     } else if (index > itemCount()-1) {
@@ -103,7 +108,7 @@ T LinkedList::removeValueAt(int index) {
                 top = nullptr;
                 return val;
             } else {
-                LinkedNode* newTop = top->getNext();
+                LinkedNode<T>* newTop = top->getNext();
                 delete top;
                 top = newTop;
                 return val;
@@ -111,13 +116,13 @@ T LinkedList::removeValueAt(int index) {
         } else {
 
             int count = 0;
-            LinkedNode* temp = top;
+            LinkedNode<T>* temp = top;
             while (count != index-1) {
                 temp = temp->getNext();
                 count++;
             }
             T val = temp->getNext()->getItem();
-            LinkedNode* newNext = temp->getNext()->getNext();
+            LinkedNode<T>* newNext = temp->getNext()->getNext();
             delete temp->getNext();
             temp->setNext(newNext);
             return val;
@@ -127,22 +132,22 @@ T LinkedList::removeValueAt(int index) {
 }
 
 template<class T>
-bool LinkedList::isEmpty() {
+bool LinkedList<T>::isEmpty() {
     return itemCount() == 0;
 }
 
 template<class T>
-int LinkedList::itemCount() {
+int LinkedList<T>::itemCount() {
     return nodeCount;
 }
 
 template<class T>
-void LinkedList::clearList() {
+void LinkedList<T>::clearList() {
     if (top->getNext() == nullptr) {
         delete top;
         top = nullptr;
     } else {
-        LinkedNode *temp = top->getNext();
+        LinkedNode<T>* temp = top->getNext();
         while (temp != nullptr) {
             delete temp;
             temp = temp->getNext();
@@ -153,26 +158,4 @@ void LinkedList::clearList() {
         }
     }
     nodeCount = 0;
-}
-
-template<class T>
-std::string LinkedList::toString() {
-    if (itemCount() < 1) {
-        return "";
-    }
-    std::string value = "{";
-    int count = 0;
-    LinkedNode* temp = top;
-    while(count < nodeCount) {
-        if (count == nodeCount-1) {
-            value += std::to_string(temp->getItem()) + "}";
-            temp = temp->getNext();
-            count++;
-        } else {
-            value += std::to_string(temp->getItem()) + ", ";
-            temp = temp->getNext();
-            count++;
-        }
-    }
-    return value;
 }

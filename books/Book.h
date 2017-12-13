@@ -4,7 +4,9 @@
 
 #ifndef BOOKSTORE_BOOK_H
 #define BOOKSTORE_BOOK_H
-
+#include "../customers/Customer.h"
+#include "../dstrctures/list/linked/LinkedList.h"
+#include "../dstrctures/queue/linked/LinkedQueue.h"
 
 class Book {
 private:
@@ -14,7 +16,7 @@ private:
     std::string author;
     int stockCount;
     int wishCount;
-    LinkedQueue* waitlist;
+    LinkedQueue<Customer*>* waitlist;
 
 public:
     Book(std::string title, std::string author, int stockCount, int wishCount);

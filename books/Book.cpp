@@ -3,15 +3,13 @@
 //
 
 #include "Book.h"
-#include "Customer.h"
-#include "LinkedQueue.h"
 
 Book::Book(std::string title, std::string author, int stockCount, int wishCount){
     this->title = title;
     this->author = author;
     this->stockCount = stockCount;
     this->wishCount = wishCount;
-    LinkedQueue* waitlist = new LinkedQueue;
+    this->waitlist = new LinkedQueue<Customer*>();
 }
 
 
@@ -19,22 +17,24 @@ std::string Book::getTitle() { return this->title; }
 
 std::string Book::getAuthor() { return this->author; }
 
-int getStockCount(){ return this->stockCount; }
+int Book::getStockCount(){
+    return this->stockCount;
+}
 
-int getWishCount(){ return this->wishCount; }
+int Book::getWishCount(){ return this->wishCount; }
 
-void addToStockCount(int numCopies){
+void Book::addToStockCount(int numCopies){
     numCopies += numCopies;
 }
 
-void removeFromStockCount(int numCopies){
+void Book::removeFromStockCount(int numCopies){
     numCopies -= numCopies;
 }
 
-void enqueueWaitlist(Customer* customer){
+void Book::enqueueWaitlist(Customer* customer){
     enqueueWaitlist(customer);
 }
 
-Customer* dequeueWaitlist(){
+Customer* Book::dequeueWaitlist(){
    return dequeueWaitlist();
 }

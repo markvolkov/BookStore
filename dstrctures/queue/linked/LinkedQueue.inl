@@ -5,22 +5,22 @@
 #include "LinkedQueue.h"
 
 template<class T>
-LinkedQueue::LinkedQueue() {
-    this->list = new LinkedList();
+LinkedQueue<T>::LinkedQueue() {
+    this->list = new LinkedList<T>();
 }
 
 template<class T>
-~LinkedQueue::LinkedQueue() {
+LinkedQueue<T>::~LinkedQueue() {
     delete this->list;
 }
 
 template<class T>
-void LinkedQueue::enqueue(T item) {
+void LinkedQueue<T>::enqueue(T item) {
     list->insertAtEnd(item);
 }
 
 template<class T>
-T LinkedQueue::dequeue() {
+T LinkedQueue<T>::dequeue() {
     if (!isEmpty()) {
         return list->getValueAt(0);
     } else {
@@ -29,6 +29,6 @@ T LinkedQueue::dequeue() {
 }
 
 template<class T>
-bool LinkedQueue::isEmpty() {
+bool LinkedQueue<T>::isEmpty() {
     return list->isEmpty();
 }
