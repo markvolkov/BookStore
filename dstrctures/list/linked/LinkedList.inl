@@ -23,9 +23,20 @@ LinkedList<T>::LinkedList(const LinkedList &copyLinkedList) {
 }
 
 template<class T>
-LinkedList<T>::~LinkedList() {
-    
+void deleteNodes(LinkedNode<T>* ref) {
+    if (ref != nullptr) {
+        if (ref->getNext() != nullptr) {
+            deleteNodes(ref->getNext());
+        }
+        delete ref;
+    }
 }
+
+template<class T>
+LinkedList<T>::~LinkedList() {
+    deleteNodes(top);
+}
+
 
 template<class T>
 LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T> &linkedList) {
