@@ -12,20 +12,21 @@ MCommand::MCommand(std::string identifier) {
 }
 
 std::string MCommand::toString() {
-    std::string mString = "M - Command: Modify Want Value";
+    std::string mString = "M - Command: Modify Want Value (Title)";
+    std::cout<<"IMPORTANT! Make sure you type the title of the book following the 'm'"<<std::endl;
+
 
     return mString;}
 
 void MCommand::execute(std::vector<std::string> args) {
 //    std::cout<<"Current Want Value: "<< BookManager::getBook(arg[0])->getWishCount();
 //    std::cout<<"Current Have Value: "<< BookManager::getBook(arg[0])->getStockCount();
-
-
-    std::cout<<"Enter how many more copies of "<<args[0]<< " do you need/want?"<<std::endl;
-    std::string line;
-    getline(std::cin, line);
-    std::stoi(line);
-//    BookManager::getBook(args[0])->addToWishCount(line);
+//
+//    std::cout<<"Enter how many more copies of "<<args[0]<< " do you need/want?"<<std::endl;
+//    std::string want;
+//    getline(std::cin, want);
+//    std::stoi(want);
+//    BookManager::modifyWant(args[0],want);
 
 }
 
