@@ -10,7 +10,7 @@ OCommand::OCommand() {
 }
 
 OCommand::OCommand(std::string identifier) {
-
+    this->identifier=identifier;
 }
 
 std::string OCommand::toString() {
@@ -23,7 +23,7 @@ void OCommand::execute(std::vector<std::string> args) {
 }
 
 std::string OCommand::getName() {
-    return std::string();
+    return identifier;
 }
 int OCommand::argumentCount() {
     return 1;

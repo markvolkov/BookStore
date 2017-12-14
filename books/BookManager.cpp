@@ -3,8 +3,10 @@
 //
 
 #include "BookManager.h"
+#include "../commands/CommandManager.h"
 
 BookManager::BookManager() {
+
 
 }
 
@@ -13,7 +15,13 @@ BookManager::~BookManager() {
 }
 
 void BookManager::addBook(std::string title, int want, int have) {
-    if()
+    Book* newBook = new Book(title,have,want);
+    if(getBook(title)== nullptr){
+        std::cout<<title<<" has already been added to the invetory!"<<std::endl;
+    }
+    else {
+        books->put(title, newBook);
+    }
 
 }
 
@@ -22,10 +30,23 @@ void BookManager::readFile() {
 }
 
 void BookManager::delivery(std::string fileName) {
+    //going to call read file
+    //then add to books
 
 }
 
 void BookManager::placeOrder(std::string fileName) {
+    std::cout<<"Placing Order: Title,Want,Have"<<std::endl;
+    std::cout<<"Please seperate values by commas!"<<std::endl;
+
+    string q = "1";
+    while(q=="1"){
+        //CommandManager::executeCommand(a,3);
+        std::cout<<"To continue, type 1. To quit, type 2"<<std::endl;
+        std::string line;
+        getline(std::cin, line);
+        q = line;
+    }
 
 }
 

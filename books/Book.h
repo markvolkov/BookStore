@@ -13,13 +13,12 @@ private:
     std::string title;
     //When stock < wish order more books.
     //When sock > wish return some books.
-    std::string author;
     int stockCount;
     int wishCount;
     LinkedQueue<Customer*>* waitlist;
 
 public:
-    Book(std::string title, std::string author, int stockCount, int wishCount);
+    Book(std::string title, int stockCount, int wishCount);
     std::string getTitle();
     std::string getAuthor();
     int getStockCount();

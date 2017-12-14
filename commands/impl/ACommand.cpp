@@ -3,6 +3,7 @@
 //
 
 #include "ACommand.h"
+#include "../../books/BookManager.h"
 //Add a book to the inventory. Prompt for initial want value and have value.
 //If the title already exists, inform the user and print the information for that title.
 
@@ -24,7 +25,7 @@ void ACommand::execute(std::vector<std::string> args) {
     std::string needStr =args [2];
     int want = std::stoi(wantStr);
     int need = std::stoi(needStr);
-//  BookManager.addBook(title,want,need);
+//    BookManager.addBook(title,want,need);
 
     std::cout << "A-COMMAND EXECUTED" << std::endl;
 
