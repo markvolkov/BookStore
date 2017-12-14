@@ -38,15 +38,17 @@ void BookManager::delivery(std::string fileName) {
 void BookManager::placeOrder(std::string fileName) {
     std::cout<<"Placing Order: Title,Want,Have"<<std::endl;
     std::cout<<"Please seperate values by commas!"<<std::endl;
+    //call O-Command with a while loop running
 
-    string q = "1";
-    while(q=="1"){
-        //CommandManager::executeCommand(a,3);
-        std::cout<<"To continue, type 1. To quit, type 2"<<std::endl;
-        std::string line;
-        getline(std::cin, line);
-        q = line;
-    }
+//    string q = "1";
+//    while(q=="1"){
+//        //CommandManager::executeCommand(a,3);
+//        std::cout<<"To continue, type 1. To quit, type 2"<<std::endl;
+//        std::string line;
+//        getline(std::cin, line);
+//        q = line;
+//    }
+
 
 }
 
