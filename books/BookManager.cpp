@@ -5,6 +5,10 @@
 #include "BookManager.h"
 #include "../commands/CommandManager.h"
 #include <fstream>
+#include <cstring>
+#include <iostream>
+#include <fstream>
+#include <sstream>
 
 BookManager::BookManager() {
 
@@ -61,14 +65,38 @@ void BookManager::readFile() {
 
 }
 
-void BookManager::delivery(std::string fileName) {
+void BookManager::delivery(std::string fileIN) {
     //going to call read file
     //then add to books
+    std::ifstream infile(fileIN);
+    std::string line;
+    std::string title;
+    std::string stockS;
 
-    std::ifstream file(fileName);
-    std::string str;
-    while (std::getline(file, str))
-    {
+    if(infile.()) std::cout<< "ERROR";
+    else{
+
+        while(getline(infile, line)){
+
+            std::stringstream splitter(line);
+
+            if (splitter) {
+                getline(splitter, title, '|');
+                while (splitter) {
+                    getline(splitter, stockS, '|');
+                    std::cout << title + ":" + stockS<< std::endl;
+
+                    int stock = std::stoi(stockS);
+                    if (getBook(title)== nullptr){
+                        addBook(title,0,stock);
+                    }
+                    else{
+                        modifyHave(title,stock);
+                    }
+
+                }
+            }
+        }
 
     }
 
