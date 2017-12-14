@@ -3,7 +3,6 @@
 //
 
 #include "MCommand.h"
-#include "../../books/BookManager.h"
 
 MCommand::MCommand() {};
 

@@ -2,9 +2,6 @@
 
 #include "LCommand.h"
 
-LCommand::LCommand() {
-    this->identifier = "error";
-}
 LCommand::LCommand(std::string identifier){
     this->identifier = identifier;
 }
@@ -16,7 +13,8 @@ std::string LCommand::toString() {
 
 //loop thru book array and print out titles in alphabetical order
 void LCommand::execute(std::vector<std::string> args) {
-    std::cout << toString() << std::endl;
+
+//    std::cout << toString() << std::endl;
 }
 
 
@@ -25,5 +23,5 @@ std::string LCommand::getName() {
 }
 
 int LCommand::argumentCount() {
-    return 0;
+    return 1;
 }

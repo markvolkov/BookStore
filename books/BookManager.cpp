@@ -5,6 +5,7 @@
 #include "BookManager.h"
 #include "../commands/CommandManager.h"
 #include <fstream>
+#include "../customers/Customer.h"
 
 BookManager::BookManager() {
 
@@ -22,6 +23,37 @@ void BookManager::addBook(std::string title, int want, int have) {
     }
     else {
         std::cout<<title<<" has already been added to the invetory!"<<std::endl;
+    }
+
+}
+
+void BookManager::sellBook(std::string title) {
+    if (books->get(title) == nullptr){
+        std::cout<<"This book is not in our invetory!"<<std::endl;
+    }
+    else{
+        if(books->get(title)->getStockCount()<1){
+            std::cout<<"We currently do not have this book in stock! You will be added to the wait list"<<std::endl;
+            std::cout<<"Please enter your Name: "<<std::endl;
+            std::string name;
+            getline(std::cin, name);
+            std::cout<<"Please enter your phone number - following this format (18002004444): "<<std::endl;
+            std::string number;
+            getline(std::cin, number);
+            std::cout<<"Please enter your email address: "<<std::endl;
+            std::string email;
+            getline(std::cin, email);
+            std::cout<<"Please enter your contact preference - 'email' or 'phone': "<<std::endl;
+            std::string pref;
+            getline(std::cin, pref);
+
+            Customer* newCustomer = new Customer(name,number,email,pref);
+            books->get(title)->enqueueWaitlist(newCustomer);
+
+        }
+        else{
+            books->get(title)->removeFromStockCount(1);
+        }
     }
 
 }
@@ -57,7 +89,19 @@ void BookManager::placeOrder(std::string fileName) {
 //        q = line;
 //    }
 
+//    while(books){
+//        if(books->get(title)->getStockCount()<1){
+//            books->get(title)->addToStockCount(10);
+//        }
+//    }
 
+}
+
+Book *BookManager::getInfo(std::string title) {
+
+    std::cout<<books->get(title)->getTitle()<<std::endl;
+    std::cout<<books->get(title)->getWishCount()<<std::endl;
+    std::cout<<books->get(title)->getStockCount()<<std::endl;
 }
 
 Book *BookManager::getBook(std::string title) {
@@ -87,3 +131,5 @@ Book *BookManager::modifyWant(std::string title, int newWant) {
         books->get(title)->addToStockCount(newWant);
     }
 }
+
+

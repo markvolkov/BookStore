@@ -15,9 +15,11 @@ public:
     BookManager();
     ~BookManager();
     void addBook(std::string title, int want, int have );
+    void sellBook(std::string title);
     void readFile();
     void delivery(std::string fileName);
     void placeOrder(std::string fileName);
+    Book* getInfo(std::string title);
     Book* getBook(std::string title);
     Book* modifyHave(std::string title, int newHave);
     Book* modifyWant(std::string title, int newWant);

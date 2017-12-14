@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include <vector>
+#include "../books/BookManager.h"
 
 class Command {
 

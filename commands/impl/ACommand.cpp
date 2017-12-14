@@ -26,13 +26,12 @@ void ACommand::execute(std::vector<std::string> args) {
     int want = std::stoi(wantStr);
     int need = std::stoi(needStr);
 //    BookManager.addBook(title,want,need);
-
     std::cout << "A-COMMAND EXECUTED" << std::endl;
 
 }
 
 int ACommand::argumentCount() {
-    return 1;
+    return 3;
 }
 
 std::string ACommand::getName() {

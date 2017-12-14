@@ -17,7 +17,8 @@ std::string ICommand::toString() {
 void ICommand::execute(std::vector<std::string> args){
     std::string title = args[0];
     std::cout << "Inquire: " << title << std::endl;
-//    bookManager.getBook(title).getinformation();
+//    BookManager::getInfo(args[0]);
+
 }
 
 std::string ICommand::getName() {

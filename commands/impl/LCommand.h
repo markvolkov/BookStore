@@ -11,7 +11,7 @@ class LCommand : public Command {
 private:
     std::string identifier;
 public:
-    LCommand();
+
     LCommand(std::string identifier);
     std::string getName() override;
     std::string toString() override;
