@@ -5,7 +5,6 @@
 #include "BookManager.h"
 #include "../commands/CommandManager.h"
 #include <fstream>
-#include "../customers/Customer.h"
 
 BookManager::BookManager() {
 
@@ -29,7 +28,7 @@ void BookManager::addBook(std::string title, int want, int have) {
 
 void BookManager::sellBook(std::string title) {
     if (books->get(title) == nullptr){
-        std::cout<<"This book is not in our invetory!"<<std::endl;
+//        ACommand::execute(title);
     }
     else{
         if(books->get(title)->getStockCount()<1){
