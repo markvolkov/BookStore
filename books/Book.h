@@ -26,6 +26,8 @@ public:
 
     void addToStockCount(int numCopies);
     void removeFromStockCount(int numCopies);
+    void addToWishCount(int numCopies);
+    void removeFromWishCount(int numCopies);
     void enqueueWaitlist(Customer* customer);
     Customer* dequeueWaitlist();
 

@@ -19,6 +19,9 @@ public:
     void delivery(std::string fileName);
     void placeOrder(std::string fileName);
     Book* getBook(std::string title);
+    Book* modifyHave(std::string title, int newHave);
+    Book* modifyWant(std::string title, int newWant);
+
 
 
 

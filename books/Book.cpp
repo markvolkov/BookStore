@@ -22,11 +22,20 @@ int Book::getStockCount(){
 int Book::getWishCount(){ return this->wishCount; }
 
 void Book::addToStockCount(int numCopies){
-    numCopies += numCopies;
+    stockCount += numCopies;
 }
 
 void Book::removeFromStockCount(int numCopies){
-    numCopies -= numCopies;
+    stockCount -= numCopies;
+}
+
+void Book::addToWishCount(int numCopies) {
+    wishCount+=numCopies;
+
+}
+
+void Book::removeFromWishCount(int numCopies) {
+    wishCount-=numCopies;
 }
 
 void Book::enqueueWaitlist(Customer* customer){

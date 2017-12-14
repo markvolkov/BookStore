@@ -4,6 +4,7 @@
 
 #include "BookManager.h"
 #include "../commands/CommandManager.h"
+#include <fstream>
 
 BookManager::BookManager() {
 
@@ -17,10 +18,10 @@ BookManager::~BookManager() {
 void BookManager::addBook(std::string title, int want, int have) {
     Book* newBook = new Book(title,have,want);
     if(getBook(title)== nullptr){
-        std::cout<<title<<" has already been added to the invetory!"<<std::endl;
+        books->put(title, newBook);
     }
     else {
-        books->put(title, newBook);
+        std::cout<<title<<" has already been added to the invetory!"<<std::endl;
     }
 
 }
@@ -32,6 +33,13 @@ void BookManager::readFile() {
 void BookManager::delivery(std::string fileName) {
     //going to call read file
     //then add to books
+
+    std::ifstream file(fileName);
+    std::string str;
+    while (std::getline(file, str))
+    {
+
+    }
 
 }
 
@@ -57,5 +65,25 @@ Book *BookManager::getBook(std::string title) {
         return books->get(title);
     } catch (std::out_of_range e) {
         return nullptr;
+    }
+}
+
+Book *BookManager::modifyHave(std::string title, int newHave) {
+    if(getBook(title)== nullptr){
+        std::cout<<title<<"That book does not exist in our inventory!"<<std::endl;
+    }
+    else {
+        books->get(title)->addToStockCount(newHave);
+    }
+
+}
+
+Book *BookManager::modifyWant(std::string title, int newWant) {
+    if(getBook(title)== nullptr)
+    {
+        std::cout<<title<<"That book does not exist in our inventory!"<<std::endl;
+    }
+    else {
+        books->get(title)->addToStockCount(newWant);
     }
 }
