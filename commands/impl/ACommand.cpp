@@ -7,26 +7,26 @@
 //If the title already exists, inform the user and print the information for that title.
 
 
+
 ACommand::ACommand(std::string identifier) {
     this->identifier = identifier;
 }
 
 std::string ACommand::toString() {
-    std::string aString = "A - Command: Add Book";
+    std::string aString = "A - Command: Add Book (Title, Want, Have)";
+    std::cout<<"IMPORTANT! Make sure there are spaces in between the entries"<<std::endl;
     return aString;
 }
 
 void ACommand::execute(std::vector<std::string> args) {
-//    std::string title =args [0];
-//    std::string wantStr =args [1];
-//    std::string needStr =args [2];
-//    int* want = new int(wantStr);
-//    int* need = new int(needStr);
-//    BookManager.createBook.create
+    std::string title =args [0];
+    std::string wantStr =args [1];
+    std::string needStr =args [2];
+    int want = std::stoi(wantStr);
+    int need = std::stoi(needStr);
+//  BookManager.addBook(title,want,need);
+
     std::cout << "A-COMMAND EXECUTED" << std::endl;
-
-
-
 
 }
 

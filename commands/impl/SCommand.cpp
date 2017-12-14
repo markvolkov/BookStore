@@ -4,7 +4,9 @@
 
 #include "SCommand.h"
 
-
+SCommand::SCommand() {
+    identifier = "not instantiated correctly";
+}
 SCommand::SCommand(std::string identifier) {
     this->identifier = identifier;
 }
@@ -22,5 +24,5 @@ void SCommand::execute(std::vector<std::string> args) {
 }
 
 std::string SCommand::getName() {
-    return std::string();
+    return this->identifier;
 }

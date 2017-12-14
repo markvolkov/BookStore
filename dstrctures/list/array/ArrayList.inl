@@ -6,7 +6,7 @@
 
 template <class T>
 ArrayList<T>::ArrayList() {
-    currCapacity = 5;
+    currCapacity = 20;
     currItemCount = 0;
     array = new T[currCapacity];
 }

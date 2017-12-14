@@ -17,7 +17,7 @@ void MCommand::execute(std::vector<std::string> args) {
 }
 
 std::string MCommand::getName() {
-    return std::string();
+    return this->identifier;
 }
 
 int MCommand::argumentCount() {

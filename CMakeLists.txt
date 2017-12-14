@@ -13,5 +13,5 @@ set(SOURCE_FILES main.cpp dstrctures/list/array/ArrayList.h dstrctures/map/Array
         customers/Customer.cpp customers/Customer.cpp dstrctures/list/List.h
         dstrctures/list/linked/LinkedNode.h dstrctures/list/linked/LinkedList.h dstrctures/queue/Queue.h dstrctures/queue/linked/LinkedQueue.h
         commands/impl/RCommand.cpp commands/impl/RCommand.h
-        commands/impl/QCommand.cpp commands/impl/QCommand.h books/Book.cpp books/Book.h)
+        commands/impl/QCommand.cpp commands/impl/QCommand.h books/Book.cpp books/Book.h books/BookManager.cpp books/BookManager.h)
 add_executable(BookStore ${SOURCE_FILES})

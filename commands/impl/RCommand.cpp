@@ -9,7 +9,7 @@ RCommand::RCommand() {
 }
 
 RCommand::RCommand(std::string identifier) {
-
+    this->identifier = identifier;
 }
 
 std::string RCommand::toString() {
@@ -23,7 +23,7 @@ void RCommand::execute(std::vector<std::string> args) {
 }
 
 std::string RCommand::getName() {
-    return std::string();
+    return this->identifier;
 }
 
 int RCommand::argumentCount() {

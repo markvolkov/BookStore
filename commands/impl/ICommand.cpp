@@ -10,6 +10,7 @@ ICommand::ICommand(std::string identifier) {
 
 std::string ICommand::toString() {
     std::string iString = "I - Command: Inquire Information";
+    std::cout<<"IMPORTANT! Make sure you type in the Title"<<std::endl;
     return iString;
 }
 
