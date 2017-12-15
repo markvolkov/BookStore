@@ -59,9 +59,6 @@ void BookManager::delivery(std::string fileIN) {
 
 
     std::ifstream infile("delivery.txt");
-    std::string line;
-    std::string title;
-    std::string stockS;
 
 
     if (infile.fail()) {
@@ -69,6 +66,9 @@ void BookManager::delivery(std::string fileIN) {
     }
     else {
 
+        std::string line;
+        std::string title;
+        std::string stockS;
 
         while (getline(infile, line)) {
 
@@ -83,7 +83,6 @@ void BookManager::delivery(std::string fileIN) {
 
 
                     int stock = std::stoi(stockS);
-                    std::cout<<title + ":" + stockS<<std::endl;
 
                     if (getBook(title) == nullptr) {
                         addBook(title, 0, stock);
@@ -91,6 +90,7 @@ void BookManager::delivery(std::string fileIN) {
                         modifyHave(title, stock);
                     }
 
+                    std::cout<<title + ":" + stockS<<std::endl;
 
                 }
             }
@@ -175,12 +175,15 @@ void BookManager::getInfo(std::string title) {
 }
 
 Book* BookManager::getBook(std::string title) {
+   if (books->itemSet()->isEmpty()) {
+       return nullptr;
+   }
     try {
-        Book* book = books->get(title);
-        return book;
-    } catch (std::out_of_range e) {
+        return books->get(title);
+    }catch (std::out_of_range e) {
         return nullptr;
     }
+
 }
 
 void BookManager::modifyHave(std::string title, int newHave) {

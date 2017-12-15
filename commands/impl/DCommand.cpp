@@ -26,10 +26,10 @@ std::string DCommand::toString() {
 }
 
 void DCommand::execute(std::vector<std::string> args) {
-    BookManager::delivery(args[0]);
-
-
-
+    BookManager* bookManager = new BookManager();
+    bookManager->delivery(args[0]);
+    delete bookManager;
+    bookManager = nullptr;
 }
 
 int DCommand::argumentCount() {

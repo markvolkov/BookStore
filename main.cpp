@@ -54,7 +54,7 @@ void prompt(CommandManager *commandManager) {
                 prompt(commandManager);
             } else {
                 args.erase(args.begin());
-                commandManager->executeCommand(command, args);
+                toExecute->execute(args);
                 prompt(commandManager);
             }
         } else {

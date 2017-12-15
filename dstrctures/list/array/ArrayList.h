@@ -18,23 +18,23 @@ public:
     ArrayList();
     ArrayList(const ArrayList& copyArrayList);
     ArrayList& operator=(const ArrayList& arrayList);
-    void insertAtEnd(T itemToAdd);
+    void insertAtEnd(T itemToAdd) override;
 
-    void insertAtFront(T itemToAdd);
+    void insertAtFront(T itemToAdd) override;
 
-    void insertAt(T itemToAdd, int index);
+    void insertAt(T itemToAdd, int index) override;
 
-    T getValueAt(int index);
+    T getValueAt(int index) override;
 
-    T removeValueAt(int index);
+    T removeValueAt(int index) override;
 
     void doubleCapacity();
 
-    bool isEmpty();
+    bool isEmpty() override;
 
-    int itemCount();
+    int itemCount() override;
 
-    void clearList();
+    void clearList() override;
 
     ~ArrayList();
 
