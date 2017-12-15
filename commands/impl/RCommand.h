@@ -9,9 +9,9 @@
 class RCommand : public Command {
 private:
     std::string identifier;
+    BookManager* bookManager;
 public:
-    RCommand();
-    RCommand(std::string identifier);
+    RCommand(std::string identifier, BookManager* bookManager);
 
     std::string toString() override;
 

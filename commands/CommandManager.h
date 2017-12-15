@@ -8,11 +8,13 @@ using namespace std;
 
 #include "Command.h"
 #include "../dstrctures/map/Map.h"
+#include "../books/BookManager.h"
 
 class CommandManager {
 
 private:
     Map<string, Command*>* commands;
+    BookManager* bookManager;
 public:
     CommandManager();
     ~CommandManager();

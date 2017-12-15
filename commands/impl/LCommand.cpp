@@ -2,8 +2,9 @@
 
 #include "LCommand.h"
 
-LCommand::LCommand(std::string identifier){
+LCommand::LCommand(std::string identifier, BookManager* bookManager){
     this->identifier = identifier;
+    this->bookManager = bookManager;
 }
 
 std::string LCommand::toString() {
@@ -13,7 +14,7 @@ std::string LCommand::toString() {
 
 //loop thru book array and print out titles in alphabetical order
 void LCommand::execute(std::vector<std::string> args) {
-    BookManager::list();
+    this->bookManager->list();
 
 }
 

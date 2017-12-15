@@ -10,9 +10,9 @@
 class DCommand :public Command{
 private:
     std::string identifier;
+    BookManager* bookManager;
 public:
-    DCommand();
-    DCommand(std::string identifier);
+    DCommand(std::string identifier, BookManager* bookManager);
     std::string toString() override;
     void execute(std::vector<std::string> args) override;
     std::string getName() override;

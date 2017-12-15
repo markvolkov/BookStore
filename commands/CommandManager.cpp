@@ -14,6 +14,7 @@
 #include "./impl/QCommand.h"
 #include "./impl/RCommand.h"
 #include "./impl/SCommand.h"
+#include "../books/BookManager.h"
 
 
 
@@ -25,6 +26,7 @@ using namespace std;
 
 CommandManager::CommandManager() {
     this->commands = new ArrayMap<string, Command*>();
+    this->bookManager = new BookManager();
 }
 
 CommandManager::~CommandManager() {
@@ -57,26 +59,25 @@ void CommandManager::executeCommand(string identifier, vector<string> args) {
 
 void CommandManager::loadCommands() {
 
-
-    Command* aCommand = new ACommand("a");
+    Command* aCommand = new ACommand("a", this->bookManager);
     addCommand(aCommand);
-    Command* dCommand = new DCommand("d");
+    Command* dCommand = new DCommand("d", this->bookManager);
     addCommand(dCommand);
-    Command* hCommand = new HCommand("h");
+    Command* hCommand = new HCommand("h", this->bookManager);
     addCommand(hCommand);
-    Command* iCommand = new ICommand("i");
+    Command* iCommand = new ICommand("i", this->bookManager);
     addCommand(iCommand);
-    Command* lCommand = new LCommand("l");
+    Command* lCommand = new LCommand("l", this->bookManager);
     addCommand(lCommand);
-    Command* mCommand = new MCommand("m");
+    Command* mCommand = new MCommand("m", this->bookManager);
     addCommand(mCommand);
-    Command* oCommand = new OCommand("o");
+    Command* oCommand = new OCommand("o", this->bookManager);
     addCommand(oCommand);
-    Command* qCommand = new QCommand("q");
+    Command* qCommand = new QCommand("q", this->bookManager);
     addCommand(qCommand);
-    Command* rCommand = new RCommand("r");
+    Command* rCommand = new RCommand("r", this->bookManager);
     addCommand(rCommand);
-    Command* sCommand = new SCommand("s");
+    Command* sCommand = new SCommand("s", this->bookManager);
     addCommand(sCommand);
 
 

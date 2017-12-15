@@ -10,8 +10,9 @@
 class HCommand : public Command {
 private:
     std::string identifier;
+    BookManager* bookManager;
 public:
-    HCommand(std::string identifier);
+    HCommand(std::string identifier, BookManager* bookManager);
 
     std::string getName() override;
 

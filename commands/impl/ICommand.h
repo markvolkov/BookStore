@@ -10,8 +10,9 @@
 class ICommand :public Command{
 private:
     std::string identifier;
+    BookManager* bookManager;
 public:
-    ICommand(std::string identifier);
+    ICommand(std::string identifier, BookManager* bookManager);
 
     std::string toString() override;
 

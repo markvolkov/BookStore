@@ -10,9 +10,9 @@
 class QCommand :public Command{
 private:
     std::string identifier;
+    BookManager* bookManager;
 public:
-    QCommand();
-    QCommand(std::string identifier);
+    QCommand(std::string identifier, BookManager* bookManager);
 
     std::string toString() override;
 

@@ -4,12 +4,9 @@
 
 #include "QCommand.h"
 
-QCommand::QCommand() {
-
-}
-
-QCommand::QCommand(std::string identifier) {
-
+QCommand::QCommand(std::string identifier, BookManager* bookManager) {
+    this->identifier = identifier;
+    this->bookManager = bookManager;
 }
 
 std::string QCommand::toString() {

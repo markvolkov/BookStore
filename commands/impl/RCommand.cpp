@@ -4,12 +4,9 @@
 
 #include "RCommand.h"
 
-RCommand::RCommand() {
-
-}
-
-RCommand::RCommand(std::string identifier) {
+RCommand::RCommand(std::string identifier, BookManager* bookManager) {
     this->identifier = identifier;
+    this->bookManager = bookManager;
 }
 
 std::string RCommand::toString() {
@@ -19,7 +16,7 @@ std::string RCommand::toString() {
 
 
 void RCommand::execute(std::vector<std::string> args) {
-    BookManager::returnF(args[0]);
+    this->bookManager->returnF(args[0]);
 
 
 }

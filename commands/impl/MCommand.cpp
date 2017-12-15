@@ -4,10 +4,9 @@
 
 #include "MCommand.h"
 
-MCommand::MCommand() {};
-
-MCommand::MCommand(std::string identifier) {
+MCommand::MCommand(std::string identifier, BookManager* bookManager) {
     this->identifier = identifier;
+    this->bookManager = bookManager;
 }
 
 std::string MCommand::toString() {
@@ -25,7 +24,7 @@ void MCommand::execute(std::vector<std::string> args) {
     std::string want;
     getline(std::cin, want);
     int wantInt = std::stoi(want);
-    BookManager::modifyWant(args[0],wantInt);
+    this->bookManager->modifyWant(args[0],wantInt);
 
 }
 

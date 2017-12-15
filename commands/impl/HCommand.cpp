@@ -4,8 +4,9 @@
 #include "HCommand.h"
 #include "ACommand.h"
 
-HCommand::HCommand(std::string identifier){
+HCommand::HCommand(std::string identifier, BookManager* bookManager){
     this->identifier = identifier;
+    this->bookManager = bookManager;
 }
 
 std::string HCommand::toString() {

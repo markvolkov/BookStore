@@ -12,7 +12,7 @@ class Command {
 
 private:
     std::string identifier;
-
+    BookManager* bookManager;
 public:
     virtual std::string toString()=0;
     virtual int argumentCount()=0;

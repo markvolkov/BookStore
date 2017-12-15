@@ -9,9 +9,9 @@
 class MCommand :public Command{
 private:
     std::string identifier;
+    BookManager* bookManager;
 public:
-    MCommand();
-    MCommand(std::string identifier);
+    MCommand(std::string identifier, BookManager* bookManager);
 
     std::string toString() override;
 

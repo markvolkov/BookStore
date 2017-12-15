@@ -16,8 +16,9 @@
 
 
 
-DCommand::DCommand(std::string identifier) {
+DCommand::DCommand(std::string identifier, BookManager* bookManager) {
     this->identifier = identifier;
+    this->bookManager = bookManager;
 }
 
 std::string DCommand::toString() {

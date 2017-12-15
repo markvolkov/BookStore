@@ -10,9 +10,10 @@
 class LCommand : public Command {
 private:
     std::string identifier;
+    BookManager* bookManager;
 public:
 
-    LCommand(std::string identifier);
+    LCommand(std::string identifier, BookManager* bookManager);
     std::string getName() override;
     std::string toString() override;
     void execute(std::vector<std::string> args) override;

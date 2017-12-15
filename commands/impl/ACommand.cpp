@@ -7,10 +7,9 @@
 //Add a book to the inventory. Prompt for initial want value and have value.
 //If the title already exists, inform the user and print the information for that title.
 
-
-
-ACommand::ACommand(std::string identifier) {
+ACommand::ACommand(std::string identifier, BookManager* bookManager) {
     this->identifier = identifier;
+    this->bookManager = bookManager;
 }
 
 std::string ACommand::toString() {
@@ -25,7 +24,7 @@ void ACommand::execute(std::vector<std::string> args) {
     std::string needStr =args [2];
     int want = std::stoi(wantStr);
     int need = std::stoi(needStr);
-    BookManager::addBook(title,want,need);
+    this->bookManager->addBook(title,want,need);
     std::cout << "A-COMMAND EXECUTED" << std::endl;
 
 }

@@ -6,7 +6,6 @@
 #include <fstream>
 #include <sstream>
 
-ArrayMap<std::string, Book*>* BookManager::books;
 BookManager::BookManager() {
     books = new ArrayMap<std::string, Book*>();
 }
@@ -160,24 +159,23 @@ void BookManager::returnF(std::string fileName) {
 }
 
 void BookManager::list() {
-    for (int i = 0; i < books->itemSet()->itemCount(); ++i) {
+    std::cout << "list called" << std::endl;
+    for (int i = 0; i < books->itemSet()->itemCount(); i++) {
         Book *newBook = books->itemSet()->getValueAt(i)->getValue();
-        getInfo(newBook->getTitle());
+        getInfo(newBook->getTitle(), newBook);
     }
 }
 
-void BookManager::getInfo(std::string title) {
-
-    std::cout<<"It got here";
-    std::cout << books->get(title)->getTitle()<<std::endl;
-    std::cout << books->get(title)->getWishCount() << std::endl;
-    std::cout << books->get(title)->getStockCount() << std::endl;
+void BookManager::getInfo(std::string title, Book* toPrint) {
+    std::cout << toPrint->getTitle()<<std::endl;
+    std::cout << toPrint->getWishCount() << std::endl;
+    std::cout << toPrint->getStockCount() << std::endl;
 }
 
 Book* BookManager::getBook(std::string title) {
-   if (books->itemSet()->isEmpty()) {
-       return nullptr;
-   }
+    if (books->itemSet()->isEmpty()) {
+        return nullptr;
+    }
     try {
         return books->get(title);
     }catch (std::out_of_range e) {
@@ -185,6 +183,7 @@ Book* BookManager::getBook(std::string title) {
     }
 
 }
+
 
 void BookManager::modifyHave(std::string title, int newHave) {
     if (getBook(title) == nullptr) {

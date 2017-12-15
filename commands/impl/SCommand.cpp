@@ -4,11 +4,9 @@
 
 #include "SCommand.h"
 
-SCommand::SCommand() {
-    identifier = "not instantiated correctly";
-}
-SCommand::SCommand(std::string identifier) {
+SCommand::SCommand(std::string identifier, BookManager* bookManager) {
     this->identifier = identifier;
+    this->bookManager = bookManager;
 }
 
 int SCommand::argumentCount() {
@@ -17,10 +15,12 @@ int SCommand::argumentCount() {
 
 std::string SCommand::toString() {
     std::string sString = "S - Command: Sell Book";
-    return sString;}
+    return sString;
+}
+
 
 void SCommand::execute(std::vector<std::string> args) {
-    BookManager::sellBook(args[0]);
+    this->bookManager->sellBook(args[0]);
 
 }
 

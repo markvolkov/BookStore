@@ -4,8 +4,9 @@
 
 #include "ICommand.h"
 //Display all information for a specified title.
-ICommand::ICommand(std::string identifier) {
+ICommand::ICommand(std::string identifier, BookManager* bookManager) {
     this->identifier = identifier;
+    this->bookManager = bookManager;
 }
 
 std::string ICommand::toString() {
@@ -17,7 +18,7 @@ std::string ICommand::toString() {
 void ICommand::execute(std::vector<std::string> args){
     std::string title = args[0];
     std::cout << "Inquire: " << title << std::endl;
-    BookManager::getInfo(args[0]);
+//    BookManager::getInfo(args[0]);
 
 }
 

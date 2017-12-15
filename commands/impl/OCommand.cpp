@@ -5,12 +5,9 @@
 #include "OCommand.h"
 //Create a bulk purchase order for additional books based on a comparison of the have and want values in the inventory.
 
-OCommand::OCommand() {
-
-}
-
-OCommand::OCommand(std::string identifier) {
+OCommand::OCommand(std::string identifier, BookManager* bookManager) {
     this->identifier=identifier;
+    this->bookManager = bookManager;
 }
 
 std::string OCommand::toString() {
@@ -19,7 +16,7 @@ std::string OCommand::toString() {
 }
 
 void OCommand::execute(std::vector<std::string> args) {
-    BookManager::placeOrder(args[0]);
+    this->bookManager->placeOrder(args[0]);
 
 }
 
