@@ -26,11 +26,10 @@ std::string DCommand::toString() {
 }
 
 void DCommand::execute(std::vector<std::string> args) {
-//    BookManager::delivery(args[0]);
+    BookManager::delivery(args[0]);
 
 
 
-    std::cout<<"D - COMMAND EXECUTED"<<std::endl;
 }
 
 int DCommand::argumentCount() {

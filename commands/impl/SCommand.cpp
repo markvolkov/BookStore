@@ -20,7 +20,7 @@ std::string SCommand::toString() {
     return sString;}
 
 void SCommand::execute(std::vector<std::string> args) {
-//    BookManager::sellBook(args[0]);
+    BookManager::sellBook(args[0]);
 
 }
 

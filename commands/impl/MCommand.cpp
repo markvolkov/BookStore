@@ -24,8 +24,8 @@ void MCommand::execute(std::vector<std::string> args) {
     std::cout<<"Enter how many more copies of "<<args[0]<< " do you need/want?"<<std::endl;
     std::string want;
     getline(std::cin, want);
-    std::stoi(want);
-//    BookManager::modifyWant(args[0],want);
+    int wantInt = std::stoi(want);
+    BookManager::modifyWant(args[0],wantInt);
 
 }
 

@@ -27,7 +27,8 @@ void BookManager::addBook(std::string title, int want, int have) {
 
 void BookManager::sellBook(std::string title) {
     if (books->get(title) == nullptr) {
-//        ACommand::execute(title);
+        addBook(title,0,1);
+        std::cout<<"it worked";
     } else {
         if (books->get(title)->getStockCount() < 1) {
             std::cout << "We currently do not have this book in stock! You will be added to the wait list" << std::endl;
