@@ -14,13 +14,7 @@
 #include "./impl/QCommand.h"
 #include "./impl/RCommand.h"
 #include "./impl/SCommand.h"
-#include "../books/BookManager.h"
 
-
-
-
-
-#include "../dstrctures/map/ArrayMap.h"
 
 using namespace std;
 

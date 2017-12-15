@@ -7,6 +7,7 @@
 #include <iostream>
 #include <vector>
 #include "../books/BookManager.h"
+#include "../dstrctures/map/ArrayMap.h"
 
 class Command {
 

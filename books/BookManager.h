@@ -22,7 +22,7 @@ public:
     void list();
     void getInfo(std::string title, Book* book);
     Book* getBook(std::string title);
-    void modifyHave(std::string title, int newHave);
+    void modifyStock(std::string title, int modifyStock);
     void modifyWant(std::string title, int newWant);
 };
 
