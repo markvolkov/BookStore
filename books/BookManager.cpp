@@ -3,6 +3,7 @@
 //
 
 #include "BookManager.h"
+#include "../dstrctures/map/ArrayMap.h"
 #include <fstream>
 #include <sstream>
 
@@ -59,11 +60,8 @@ void BookManager::sellBook(std::string title) {
 }
 
 void BookManager::delivery(std::string fileIN) {
-
-
+    //TODO
     std::ifstream infile("delivery.txt");
-
-
     if (infile.fail()) {
         std::cout << "ERROR";
     }
@@ -163,18 +161,16 @@ void BookManager::returnF(std::string fileName) {
 }
 
 void BookManager::list() {
-    std::cout << "Books being listed" << std::endl;
-    for (int i = 0; i < books->itemSet()->itemCount(); i++) {
-        Book *newBook = books->itemSet()->getValueAt(i)->getValue();
-        getInfo(newBook->getTitle(), newBook);
-        std::cout<<"hello";
+    std::cout << "Books being listed" << "Size: "<< books->itemSet()->itemCount() << std::endl;
+    for (int i = 0; i < this->books->itemSet()->itemCount(); i++) {
+        Book* ref = this->books->itemSet()->getValueAt(i)->getValue();
+        std::cout << ref->getTitle() << ref->getStockCount() << ref->getWishCount() << std::endl;
     }
 }
 
 void BookManager::getInfo(std::string title, Book* toPrint) {
-    std::cout << toPrint->getTitle()<<std::endl;
-    std::cout << toPrint->getWishCount() << std::endl;
-    std::cout << toPrint->getStockCount() << std::endl;
+    std::cout << toPrint->getTitle()<<" "<< toPrint->getWishCount() << " "<<toPrint->getStockCount()<<std::endl;
+
 }
 
 Book* BookManager::getBook(std::string title) {

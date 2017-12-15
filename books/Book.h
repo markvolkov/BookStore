@@ -10,18 +10,19 @@
 class Book {
 private:
     std::string title;
-    //When stock < wish order more books.
-    //When sock > wish return some books.
     int stockCount;
     int wishCount;
     LinkedQueue<Customer*>* waitlist;
 
 public:
+    Book();
     Book(std::string title, int wishCount,int stockCount);
+    Book(Book& toCopy);
+    Book& operator=(const Book& toCopy);
+    ~Book();
     std::string getTitle();
     int getStockCount();
     int getWishCount();
-
     void addToStockCount(int numCopies);
     void removeFromStockCount(int numCopies);
     void addToWishCount(int numCopies);

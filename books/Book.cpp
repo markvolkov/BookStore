@@ -3,6 +3,9 @@
 //
 
 #include "Book.h"
+Book::Book() {
+
+}
 
 Book::Book(std::string title, int wishCount, int stockCount){
     this->title = title;
@@ -10,6 +13,19 @@ Book::Book(std::string title, int wishCount, int stockCount){
     this->wishCount = wishCount;
     this->waitlist = new LinkedQueue<Customer*>();
 }
+
+
+Book::Book(Book &toCopy) {
+    this->title = toCopy.title;
+    this->stockCount = toCopy.stockCount;
+    this->wishCount = toCopy.wishCount;
+    this->waitlist = toCopy.waitlist;
+}
+
+Book::~Book() {
+
+}
+
 
 std::string Book::getTitle() {
     return this->title;

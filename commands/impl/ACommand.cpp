@@ -24,9 +24,10 @@ void ACommand::execute(std::vector<std::string> args) {
     std::string needStr =args [2];
     int want = std::stoi(wantStr);
     int stock = std::stoi(needStr);
+    std::cout << "Title: " << title << "Want: " << wantStr << "Need: " << needStr << endl;
     this->bookManager->addBook(title,want,stock);
     std::cout << "A-COMMAND EXECUTED" << std::endl;
-    std::cout<<args[0]<<" added to the inventory with ";
+    std::cout<<args[0]<<" added to the inventory with "<< args[1]<<" amount of copies in stock";
 
 }
 

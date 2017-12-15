@@ -16,10 +16,9 @@
 #include "./impl/SCommand.h"
 
 
-using namespace std;
 
 CommandManager::CommandManager() {
-    this->commands = new ArrayMap<string, Command*>();
+    this->commands = new ArrayMap<std::string, Command*>();
     this->bookManager = new BookManager();
 }
 
@@ -30,7 +29,7 @@ CommandManager::~CommandManager() {
     delete this->commands;
 }
 
-Command* CommandManager::getCommand(string identifer) {
+Command* CommandManager::getCommand(std::string identifer) {
     try {
         Command* command = commands->get(identifer);
         return command;
@@ -44,7 +43,7 @@ bool CommandManager::addCommand(Command* command) {
     return true;
 }
 
-void CommandManager::executeCommand(string identifier, vector<string> args) {
+void CommandManager::executeCommand(std::string identifier, std::vector<string> args) {
     Command* command = commands->get(identifier);
     if (command != nullptr) {
         command->execute(args);

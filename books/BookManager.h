@@ -6,11 +6,11 @@
 #define BOOKSTORE_BOOKMANAGER_H
 
 #include "Book.h"
-#include "../dstrctures/map/ArrayMap.h"
+#include "../dstrctures/map/Map.h"
 
 class BookManager {
 private:
-    ArrayMap<std::string,Book*> *books;
+    Map<std::string,Book*> *books;
 public:
     BookManager();
     ~BookManager();

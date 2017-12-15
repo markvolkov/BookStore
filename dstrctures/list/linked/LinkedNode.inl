@@ -23,7 +23,7 @@ LinkedNode<T>::LinkedNode(const LinkedNode& nodeToCopy){
 
 template<class T>
 T LinkedNode<T>::getItem(){
-    return item;
+    return this->item;
 }
 
 template<class T>
