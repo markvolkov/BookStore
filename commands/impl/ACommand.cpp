@@ -25,7 +25,7 @@ void ACommand::execute(std::vector<std::string> args) {
     std::string needStr =args [2];
     int want = std::stoi(wantStr);
     int need = std::stoi(needStr);
-//    BookManager::addBook(title,want,need);
+    BookManager::addBook(title,want,need);
     std::cout << "A-COMMAND EXECUTED" << std::endl;
 
 }

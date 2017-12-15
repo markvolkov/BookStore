@@ -18,14 +18,14 @@ std::string MCommand::toString() {
     return mString;}
 
 void MCommand::execute(std::vector<std::string> args) {
-//    std::cout<<"Current Want Value: "<< BookManager::getBook(arg[0])->getWishCount();
-//    std::cout<<"Current Have Value: "<< BookManager::getBook(arg[0])->getStockCount();
-//
-//    std::cout<<"Enter how many more copies of "<<args[0]<< " do you need/want?"<<std::endl;
-//    std::string want;
-//    getline(std::cin, want);
-//    std::stoi(want);
-//    BookManager::modifyWant(args[0],want);
+    std::cout<<"Current Want Value: "<< BookManager::getBook(arg[0])->getWishCount();
+    std::cout<<"Current Have Value: "<< BookManager::getBook(arg[0])->getStockCount();
+
+    std::cout<<"Enter how many more copies of "<<args[0]<< " do you need/want?"<<std::endl;
+    std::string want;
+    getline(std::cin, want);
+    std::stoi(want);
+    BookManager::modifyWant(args[0],want);
 
 }
 

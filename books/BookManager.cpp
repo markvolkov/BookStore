@@ -14,7 +14,6 @@ BookManager::BookManager() {
 
 
 }
-
 BookManager::~BookManager() {
 
 }
@@ -61,10 +60,6 @@ void BookManager::sellBook(std::string title) {
 
 }
 
-void BookManager::readFile() {
-
-}
-
 void BookManager::delivery(std::string fileIN) {
     //going to call read file
     //then add to books
@@ -103,25 +98,62 @@ void BookManager::delivery(std::string fileIN) {
 }
 
 void BookManager::placeOrder(std::string fileName) {
-    std::cout<<"Placing Order: Title,Want,Have"<<std::endl;
-    std::cout<<"Please seperate values by commas!"<<std::endl;
-    //call O-Command with a while loop running
+    std::cout<<"Placing Order..."<<std::endl;
+    for (int i = 0; i < this->books->itemSet()->itemCount(); ++i) {
+        Book* newBook = books->itemSet()->getValueAt(i)->getValue();
+        int want = newBook->getWishCount();
+        int stock = newBook->getStockCount();
+        std::string title = newBook->getTitle();
+        if (want>stock){
+            int orderAmount = want-stock;
+            std::string bookOrder = title + "|" + orderAmount;
+            std::ofstream fout (fileName);
+            if (fout) {
+                std::stringstream parts(bookOrder);
+                while(parts){
+                    std::string part;
+                    getline(parts, part);
+                    fout << part << std::endl;
+                    }
 
-//    string q = "1";
-//    while(q=="1"){
-//        //CommandManager::executeCommand(a,3);
-//        std::cout<<"To continue, type 1. To quit, type 2"<<std::endl;
-//        std::string line;
-//        getline(std::cin, line);
-//        q = line;
-//    }
+                fout.close();
+            }
+            else {
+                std::cout << "Error in opening file";
+            }
+        }
+    }
 
-//    while(books){
-//        if(books->get(title)->getStockCount()<1){
-//            books->get(title)->addToStockCount(10);
-//        }
-//    }
 
+}
+
+void BookManager::returnF(std::string fileName) {
+    for (int i = 0; i < this->books->itemSet()->itemCount() ; ++i) {
+        Book* newBook = books->itemSet()->getValueAt(i)->getValue();
+        int want = newBook->getWishCount();
+        int have = newBook->getStockCount();
+        std::string title = newBook->getTitle();
+        if(have>want){
+            int returnAmount = have-want;
+            modifyHave(title,-returnAmount);
+            std::string bookOrder = title + "|" + returnAmount;
+            std::ofstream fout (fileName);
+            if (fout) {
+                std::stringstream parts(bookOrder);
+                while(parts){
+                    std::string part;
+                    getline(parts, part);
+                    fout << part << std::endl;
+                }
+
+                fout.close();
+            }
+            else {
+                std::cout << "Error in opening file";
+            }
+        }
+
+    }
 }
 
 Book *BookManager::getInfo(std::string title) {
@@ -158,5 +190,6 @@ Book *BookManager::modifyWant(std::string title, int newWant) {
         books->get(title)->addToStockCount(newWant);
     }
 }
+
 
 

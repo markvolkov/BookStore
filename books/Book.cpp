@@ -19,6 +19,7 @@ int Book::getStockCount(){
     return this->stockCount;
 }
 
+
 int Book::getWishCount(){ return this->wishCount; }
 
 void Book::addToStockCount(int numCopies){

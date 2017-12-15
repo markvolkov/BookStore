@@ -19,6 +19,8 @@ std::string RCommand::toString() {
 
 
 void RCommand::execute(std::vector<std::string> args) {
+    BookManager::returnF(args[0]);
+
 
 }
 

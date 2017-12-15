@@ -19,6 +19,7 @@ std::string OCommand::toString() {
 }
 
 void OCommand::execute(std::vector<std::string> args) {
+    BookManager::placeOrder(args[0]);
 
 }
 
