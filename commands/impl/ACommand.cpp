@@ -19,7 +19,7 @@ std::string ACommand::toString() {
 }
 
 void ACommand::execute(std::vector<std::string> args) {
-    std::string title =args [0];
+    std::string title  =args [0];
     std::string wantStr =args [1];
     std::string needStr =args [2];
     int want = std::stoi(wantStr);

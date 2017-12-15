@@ -41,7 +41,9 @@ void prompt(CommandManager *commandManager) {
     while (args.size() == size) {
         command = args[0];
         if (command == "q" || command == "quit") {
-            return;
+            delete commandManager;
+            commandManager = nullptr;
+            break;
         }
         Command* toExecute = commandManager->getCommand(command);
         if (toExecute != nullptr) {
@@ -69,8 +71,6 @@ int main() {
     CommandManager *commandManager = new CommandManager();
     commandManager->loadCommands();
     prompt(commandManager);
-    delete commandManager;
-    commandManager = nullptr;
     return 0;
 
 }

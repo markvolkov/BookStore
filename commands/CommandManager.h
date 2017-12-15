@@ -1,7 +1,6 @@
 //
 // Created by Mark Volkov on 11/28/17.
 //
-using namespace std;
 
 #ifndef BOOKSTORE_COMMANDMANAGER_H
 #define BOOKSTORE_COMMANDMANAGER_H
@@ -13,14 +12,14 @@ using namespace std;
 class CommandManager {
 
 private:
-    Map<string, Command*>* commands;
+    Map<std::string, Command*>* commands;
     BookManager* bookManager;
 public:
     CommandManager();
     ~CommandManager();
-    Command* getCommand(string identifer);
+    Command* getCommand(std::string identifer);
     bool addCommand(Command* command);
-    void executeCommand(string identifier, vector<string> args);
+    void executeCommand(std::string identifier, std::vector<std::string> args);
     void loadCommands();
 };
 

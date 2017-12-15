@@ -3,9 +3,6 @@
 //
 
 #include "Book.h"
-Book::Book() {
-
-}
 
 Book::Book(std::string title, int wishCount, int stockCount){
     this->title = title;
@@ -15,15 +12,8 @@ Book::Book(std::string title, int wishCount, int stockCount){
 }
 
 
-Book::Book(Book &toCopy) {
-    this->title = toCopy.title;
-    this->stockCount = toCopy.stockCount;
-    this->wishCount = toCopy.wishCount;
-    this->waitlist = toCopy.waitlist;
-}
-
 Book::~Book() {
-
+ delete this->waitlist;
 }
 
 
@@ -57,7 +47,7 @@ void Book::removeFromWishCount(int numCopies) {
 }
 
 void Book::enqueueWaitlist(Customer* customer){
-    enqueueWaitlist(customer);
+
 }
 
 Customer* Book::dequeueWaitlist(){

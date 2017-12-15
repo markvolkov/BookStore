@@ -15,10 +15,7 @@ private:
     LinkedQueue<Customer*>* waitlist;
 
 public:
-    Book();
     Book(std::string title, int wishCount,int stockCount);
-    Book(Book& toCopy);
-    Book& operator=(const Book& toCopy);
     ~Book();
     std::string getTitle();
     int getStockCount();

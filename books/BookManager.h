@@ -10,7 +10,7 @@
 
 class BookManager {
 private:
-    Map<std::string,Book*> *books;
+    Map<std::string, Book*>* books;
 public:
     BookManager();
     ~BookManager();

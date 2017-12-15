@@ -28,7 +28,7 @@ template <class K, class V>
 V ArrayMap<K, V>::get(K key) {
     for (int i = 0; i < this->items->itemCount(); i++) {
         Item<K, V>* item = this->items->getValueAt(i);
-        if (item->getKey()== key) {
+        if (item->getKey() == key) {
             return item->getValue();
         }
     }

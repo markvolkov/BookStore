@@ -15,14 +15,16 @@ BookManager::~BookManager() {
     delete books;
 }
 
-void BookManager::addBook(std::string title, int want, int stock) {
-    if (getBook(title) == nullptr) {
-        Book* newBook = new Book(title,want,stock);
-        books->put(title, newBook);
-    } else {
-        std::cout << title << " has already been added to the inventory!" << std::endl;
-    }
 
+void BookManager::addBook(std::string title, int want, int stock) {
+    if (getBook(title) != nullptr) {
+        std::cout << "A book with that title already exists!" << std::endl;
+        return;
+    }
+    Book* newBook = new Book(title, want, stock);
+    books->put(newBook->getTitle(), newBook);
+    std::cout << "Book has been added." << std::endl;
+    return;
 }
 
 void BookManager::sellBook(std::string title) {
@@ -161,10 +163,10 @@ void BookManager::returnF(std::string fileName) {
 }
 
 void BookManager::list() {
-    std::cout << "Books being listed" << "Size: "<< books->itemSet()->itemCount() << std::endl;
+    std::cout << "Books being listed" << " Size: "<< books->itemSet()->itemCount() << std::endl;
     for (int i = 0; i < this->books->itemSet()->itemCount(); i++) {
         Book* ref = this->books->itemSet()->getValueAt(i)->getValue();
-        std::cout << ref->getTitle() << ref->getStockCount() << ref->getWishCount() << std::endl;
+        std::cout << "Title: "<<ref->getTitle()<<"," << " Stock: " << ref->getStockCount()<<"," << " Wish: "<<ref->getWishCount()<<"," << std::endl;
     }
 }
 
@@ -174,15 +176,12 @@ void BookManager::getInfo(std::string title, Book* toPrint) {
 }
 
 Book* BookManager::getBook(std::string title) {
-    if (books->itemSet()->isEmpty()) {
-        return nullptr;
-    }
     try {
-        return books->get(title);
-    }catch (std::out_of_range e) {
+        Book* query = books->get(title);
+        return query;
+    }catch(std::out_of_range e) {
         return nullptr;
     }
-
 }
 
 
