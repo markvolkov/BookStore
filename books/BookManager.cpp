@@ -6,17 +6,18 @@
 #include <fstream>
 #include <sstream>
 
+ArrayMap<std::string, Book*>* BookManager::books;
 BookManager::BookManager() {
-    BookManager::books = new ArrayMap<std::string, Book*>();
+    books = new ArrayMap<std::string, Book*>();
 }
 
 BookManager::~BookManager() {
-    delete BookManager::books;
+    delete books;
 }
 
 void BookManager::addBook(std::string title, int want, int have) {
-    Book *newBook = new Book(title, have, want);
     if (getBook(title) == nullptr) {
+        Book *newBook = new Book(title, have, want);
         books->put(title, newBook);
     } else {
         std::cout << title << " has already been added to the inventory!" << std::endl;
@@ -161,9 +162,10 @@ void BookManager::getInfo(std::string title) {
     std::cout << books->get(title)->getStockCount() << std::endl;
 }
 
-Book *BookManager::getBook(std::string title) {
+Book* BookManager::getBook(std::string title) {
     try {
-        return books->get(title);
+        Book* book = books->get(title);
+        return book;
     } catch (std::out_of_range e) {
         return nullptr;
     }

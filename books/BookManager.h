@@ -24,8 +24,6 @@ public:
     static Book* getBook(std::string title);
     static void modifyHave(std::string title, int newHave);
     static void modifyWant(std::string title, int newWant);
-
-
 };
 
 
