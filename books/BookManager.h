@@ -6,15 +6,15 @@
 #define BOOKSTORE_BOOKMANAGER_H
 
 #include "Book.h"
-#include "../dstrctures/Map/ArrayMap.h"
+#include "../dstrctures/map/ArrayMap.h"
 
 class BookManager {
 private:
-    static ArrayMap<std::string,Book*> *books;
-public :
+     static ArrayMap<std::string,Book*> *books;
+public:
     BookManager();
     ~BookManager();
-    static void addBook(std::string title, int want, int have );
+    static void addBook(std::string title, int want, int have);
     static void sellBook(std::string title);
     static void delivery(std::string fileName);
     static void placeOrder(std::string fileName);
@@ -24,13 +24,6 @@ public :
     static Book* getBook(std::string title);
     static void modifyHave(std::string title, int newHave);
     static void modifyWant(std::string title, int newWant);
-
-
-
-
-
-
-
 
 
 };

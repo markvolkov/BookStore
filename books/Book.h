@@ -5,7 +5,6 @@
 #ifndef BOOKSTORE_BOOK_H
 #define BOOKSTORE_BOOK_H
 #include "../customers/Customer.h"
-#include "../dstrctures/list/linked/LinkedList.h"
 #include "../dstrctures/queue/linked/LinkedQueue.h"
 
 class Book {
@@ -15,7 +14,7 @@ private:
     //When sock > wish return some books.
     int stockCount;
     int wishCount;
-    static LinkedQueue<Customer*>* waitlist;
+    LinkedQueue<Customer*>* waitlist;
 
 public:
     Book(std::string title, int stockCount, int wishCount);

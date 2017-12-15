@@ -12,7 +12,7 @@ ArrayMap<K, V>::ArrayMap() {
 template<class K, class V>
 ArrayMap<K,V>::~ArrayMap() {
     for (int i = 0; i < this->items->itemCount(); i++) {
-       // delete this->items->getValueAt(i);
+        delete this->items->getValueAt(i);
     }
     delete this->items;
 }
