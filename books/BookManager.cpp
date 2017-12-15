@@ -17,7 +17,7 @@ BookManager::~BookManager() {
 
 void BookManager::addBook(std::string title, int want, int have) {
     if (getBook(title) == nullptr) {
-        Book* newBook = new Book(title, have, want);
+        Book* newBook = new Book(title,want,have);
         books->put(title, newBook);
     } else {
         std::cout << title << " has already been added to the inventory!" << std::endl;

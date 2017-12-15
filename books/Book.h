@@ -17,9 +17,8 @@ private:
     LinkedQueue<Customer*>* waitlist;
 
 public:
-    Book(std::string title, int stockCount, int wishCount);
+    Book(std::string title, int wishCount,int stockCount);
     std::string getTitle();
-    std::string getAuthor();
     int getStockCount();
     int getWishCount();
 

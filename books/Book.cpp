@@ -4,7 +4,7 @@
 
 #include "Book.h"
 
-Book::Book(std::string title, int stockCount, int wishCount){
+Book::Book(std::string title, int wishCount, int stockCount){
     this->title = title;
     this->stockCount = stockCount;
     this->wishCount = wishCount;
@@ -19,9 +19,7 @@ int Book::getStockCount(){
     return this->stockCount;
 }
 
-std::string Book::getAuthor() {
-    return std::string();
-}
+
 
 int Book::getWishCount(){ return this->wishCount; }
 
