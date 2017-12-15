@@ -10,7 +10,7 @@
 
 class BookManager {
 private:
-    ArrayMap<std::string,Book*> *books;
+    static ArrayMap<std::string,Book*> *books;
 public :
     BookManager();
     ~BookManager();
@@ -20,10 +20,10 @@ public :
     static void placeOrder(std::string fileName);
     static void returnF(std::string file);
     static void list();
-    Book* getInfo(std::string title);
-    Book* getBook(std::string title);
-    Book* modifyHave(std::string title, int newHave);
-    Book* modifyWant(std::string title, int newWant);
+    static void getInfo(std::string title);
+    static Book* getBook(std::string title);
+    static void modifyHave(std::string title, int newHave);
+    static void modifyWant(std::string title, int newWant);
 
 
 

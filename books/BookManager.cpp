@@ -3,7 +3,6 @@
 //
 
 #include "BookManager.h"
-#include "../commands/CommandManager.h"
 #include <fstream>
 #include <cstring>
 #include <iostream>
@@ -20,7 +19,7 @@ BookManager::~BookManager() {
 
 void BookManager::addBook(std::string title, int want, int have) {
     Book* newBook = new Book(title,have,want);
-    if(this->getBook(title)== nullptr){
+    if(getBook(title)== nullptr){
         books->put(title, newBook);
     }
     else {
@@ -99,7 +98,7 @@ void BookManager::delivery(std::string fileIN) {
 
 void BookManager::placeOrder(std::string fileName) {
     std::cout<<"Placing Order..."<<std::endl;
-    for (int i = 0; i < this->books->itemSet()->itemCount(); ++i) {
+    for (int i = 0; i < books->itemSet()->itemCount(); ++i) {
         Book* newBook = books->itemSet()->getValueAt(i)->getValue();
         int want = newBook->getWishCount();
         int stock = newBook->getStockCount();
@@ -129,7 +128,7 @@ void BookManager::placeOrder(std::string fileName) {
 }
 
 void BookManager::returnF(std::string fileName) {
-    for (int i = 0; i < this->books->itemSet()->itemCount() ; ++i) {
+    for (int i = 0; i < books->itemSet()->itemCount() ; ++i) {
         Book* newBook = books->itemSet()->getValueAt(i)->getValue();
         int want = newBook->getWishCount();
         int have = newBook->getStockCount();
@@ -158,13 +157,13 @@ void BookManager::returnF(std::string fileName) {
 }
 
 void BookManager::list() {
-    for (int i = 0; i < this->books->itemSet()->itemCount() ; ++i) {
+    for (int i = 0; i < books->itemSet()->itemCount() ; ++i) {
         Book *newBook = books->itemSet()->getValueAt(i)->getValue();
         getInfo(newBook->getTitle());
     }
 }
 
-Book *BookManager::getInfo(std::string title) {
+void BookManager::getInfo(std::string title) {
 
     std::cout<<books->get(title)->getTitle()<<std::endl;
     std::cout<<books->get(title)->getWishCount()<<std::endl;
@@ -179,7 +178,7 @@ Book *BookManager::getBook(std::string title) {
     }
 }
 
-Book *BookManager::modifyHave(std::string title, int newHave) {
+void BookManager::modifyHave(std::string title, int newHave) {
     if(getBook(title)== nullptr){
         std::cout<<title<<"That book does not exist in our inventory!"<<std::endl;
     }
@@ -189,7 +188,7 @@ Book *BookManager::modifyHave(std::string title, int newHave) {
 
 }
 
-Book *BookManager::modifyWant(std::string title, int newWant) {
+void BookManager::modifyWant(std::string title, int newWant) {
     if(getBook(title)== nullptr)
     {
         std::cout<<title<<"That book does not exist in our inventory!"<<std::endl;
