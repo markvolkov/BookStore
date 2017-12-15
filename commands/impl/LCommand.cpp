@@ -13,8 +13,8 @@ std::string LCommand::toString() {
 
 //loop thru book array and print out titles in alphabetical order
 void LCommand::execute(std::vector<std::string> args) {
+    BookManager
 
-//    std::cout << toString() << std::endl;
 }
 
 

@@ -26,7 +26,7 @@ std::string DCommand::toString() {
 }
 
 void DCommand::execute(std::vector<std::string> args) {
-    BookManager::delivery(args[0]);
+//    BookManager::delivery(args[0]);
 
 
 
@@ -34,7 +34,7 @@ void DCommand::execute(std::vector<std::string> args) {
 }
 
 int DCommand::argumentCount() {
-    return 0;
+    return 1;
 }
 
 std::string DCommand::getName() {

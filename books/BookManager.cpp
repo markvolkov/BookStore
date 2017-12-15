@@ -68,7 +68,7 @@ void BookManager::delivery(std::string fileIN) {
     std::string title;
     std::string stockS;
 
-    if(infile.()) std::cout<< "ERROR";
+    if(infile.fail()) std::cout<< "ERROR";
     else{
 
         while(getline(infile, line)){
@@ -106,7 +106,8 @@ void BookManager::placeOrder(std::string fileName) {
         std::string title = newBook->getTitle();
         if (want>stock){
             int orderAmount = want-stock;
-            std::string bookOrder = title + "|" + orderAmount;
+
+            std::string bookOrder = title + "|" + std::to_string(orderAmount);
             std::ofstream fout (fileName);
             if (fout) {
                 std::stringstream parts(bookOrder);
@@ -136,7 +137,7 @@ void BookManager::returnF(std::string fileName) {
         if(have>want){
             int returnAmount = have-want;
             modifyHave(title,-returnAmount);
-            std::string bookOrder = title + "|" + returnAmount;
+            std::string bookOrder = title + "|" + std::to_string(returnAmount);
             std::ofstream fout (fileName);
             if (fout) {
                 std::stringstream parts(bookOrder);

@@ -19,6 +19,7 @@ public:
     void delivery(std::string fileName);
     void placeOrder(std::string fileName);
     void returnF(std::string file);
+    void list();
     Book* getInfo(std::string title);
     Book* getBook(std::string title);
     Book* modifyHave(std::string title, int newHave);
