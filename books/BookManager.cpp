@@ -17,7 +17,7 @@ BookManager::~BookManager() {
 
 void BookManager::addBook(std::string title, int want, int have) {
     if (getBook(title) == nullptr) {
-        Book *newBook = new Book(title, have, want);
+        Book* newBook = new Book(title, have, want);
         books->put(title, newBook);
     } else {
         std::cout << title << " has already been added to the inventory!" << std::endl;
@@ -56,15 +56,19 @@ void BookManager::sellBook(std::string title) {
 }
 
 void BookManager::delivery(std::string fileIN) {
-    //going to call read file
-    //then add to books
-    std::ifstream infile(fileIN);
+
+
+    std::ifstream infile("delivery.txt");
     std::string line;
     std::string title;
     std::string stockS;
 
-    if (infile.fail()) std::cout << "ERROR";
+
+    if (infile.fail()) {
+        std::cout << "ERROR";
+    }
     else {
+
 
         while (getline(infile, line)) {
 
@@ -72,17 +76,21 @@ void BookManager::delivery(std::string fileIN) {
 
             if (splitter) {
                 getline(splitter, title, '|');
+
                 while (splitter) {
+
                     getline(splitter, stockS);
-                    std::cout << title + ":" + stockS << std::endl;
+
 
                     int stock = std::stoi(stockS);
+                    std::cout<<title + ":" + stockS<<std::endl;
+
                     if (getBook(title) == nullptr) {
                         addBook(title, 0, stock);
                     } else {
                         modifyHave(title, stock);
                     }
-                    ;
+
 
                 }
             }
@@ -160,7 +168,8 @@ void BookManager::list() {
 
 void BookManager::getInfo(std::string title) {
 
-    std::cout << books->get(title)->getTitle() << std::endl;
+    std::cout<<"It got here";
+    std::cout << books->get(title)->getTitle()<<std::endl;
     std::cout << books->get(title)->getWishCount() << std::endl;
     std::cout << books->get(title)->getStockCount() << std::endl;
 }

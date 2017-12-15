@@ -11,7 +11,9 @@ Book::Book(std::string title, int stockCount, int wishCount){
     this->waitlist = new LinkedQueue<Customer*>();
 }
 
-std::string Book::getTitle() { return this->title; }
+std::string Book::getTitle() {
+    return this->title;
+}
 
 int Book::getStockCount(){
     return this->stockCount;
