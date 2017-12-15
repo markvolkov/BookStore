@@ -16,6 +16,7 @@ std::string RCommand::toString() {
 
 
 void RCommand::execute(std::vector<std::string> args) {
+    std::cout<<"Return Invoice started...";
     this->bookManager->returnF(args[0]);
 
 

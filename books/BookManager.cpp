@@ -25,10 +25,14 @@ void BookManager::addBook(std::string title, int want, int have) {
 }
 
 void BookManager::sellBook(std::string title) {
-    if (books->get(title) == nullptr) {
-        addBook(title,0,1);
-        std::cout<<"it worked";
-    } else {
+
+    try{
+        if(getBook(title) != nullptr) {
+            addBook(title, 0, 1);
+            std::cout << title << " has been sold!" << std::endl;
+        }
+    } catch(std::out_of_range e)
+    {
         if (books->get(title)->getStockCount() < 1) {
             std::cout << "We currently do not have this book in stock! You will be added to the wait list" << std::endl;
             std::cout << "Please enter your Name: " << std::endl;
@@ -196,7 +200,7 @@ void BookManager::modifyHave(std::string title, int newHave) {
 
 void BookManager::modifyWant(std::string title, int newWant) {
     if (getBook(title) == nullptr) {
-        std::cout << title << "That book does not exist in our inventory!" << std::endl;
+        std::cout << title << " That book does not exist in our inventory!" << std::endl;
     } else {
         books->get(title)->addToStockCount(newWant);
     }
