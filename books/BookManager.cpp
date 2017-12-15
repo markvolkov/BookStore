@@ -73,7 +73,7 @@ void BookManager::delivery(std::string fileIN) {
             if (splitter) {
                 getline(splitter, title, '|');
                 while (splitter) {
-                    getline(splitter, stockS, '|');
+                    getline(splitter, stockS);
                     std::cout << title + ":" + stockS << std::endl;
 
                     int stock = std::stoi(stockS);
@@ -82,9 +82,11 @@ void BookManager::delivery(std::string fileIN) {
                     } else {
                         modifyHave(title, stock);
                     }
+                    ;
 
                 }
             }
+
         }
 
     }

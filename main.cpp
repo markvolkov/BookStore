@@ -66,10 +66,10 @@ void prompt(CommandManager *commandManager) {
 }
 
 int main() {
+    std::cout << "Welcome to your BookStore management system....";
+
     CommandManager *commandManager = new CommandManager();
     commandManager->loadCommands();
-
-    std::cout << "Welcome to your BookStore management system....";
     prompt(commandManager);
     return 0;
 

@@ -27,7 +27,6 @@ CommandManager::CommandManager() {
     this->commands = new ArrayMap<string, Command*>();
 }
 
-//TODO: Check Item Class
 CommandManager::~CommandManager() {
     for (int i = 0; i < this->commands->itemSet()->itemCount(); i++) {
         delete this->commands->itemSet()->getValueAt(i);
@@ -57,7 +56,6 @@ void CommandManager::executeCommand(string identifier, vector<string> args) {
 }
 
 void CommandManager::loadCommands() {
-    //Help Command ('h', 'H')
 
 
     Command* aCommand = new ACommand("a");
