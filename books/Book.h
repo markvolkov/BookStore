@@ -15,7 +15,7 @@ private:
     //When sock > wish return some books.
     int stockCount;
     int wishCount;
-    LinkedQueue<Customer*>* waitlist;
+    static LinkedQueue<Customer*>* waitlist;
 
 public:
     Book(std::string title, int stockCount, int wishCount);

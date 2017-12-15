@@ -11,15 +11,15 @@
 class BookManager {
 private:
     ArrayMap<std::string,Book*> *books;
-public:
+public :
     BookManager();
     ~BookManager();
-    void addBook(std::string title, int want, int have );
-    void sellBook(std::string title);
-    void delivery(std::string fileName);
-    void placeOrder(std::string fileName);
-    void returnF(std::string file);
-    void list();
+    static void addBook(std::string title, int want, int have );
+    static void sellBook(std::string title);
+    static void delivery(std::string fileName);
+    static void placeOrder(std::string fileName);
+    static void returnF(std::string file);
+    static void list();
     Book* getInfo(std::string title);
     Book* getBook(std::string title);
     Book* modifyHave(std::string title, int newHave);

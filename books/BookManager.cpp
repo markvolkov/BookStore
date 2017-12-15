@@ -20,7 +20,7 @@ BookManager::~BookManager() {
 
 void BookManager::addBook(std::string title, int want, int have) {
     Book* newBook = new Book(title,have,want);
-    if(getBook(title)== nullptr){
+    if(this->getBook(title)== nullptr){
         books->put(title, newBook);
     }
     else {
@@ -154,6 +154,13 @@ void BookManager::returnF(std::string fileName) {
             }
         }
 
+    }
+}
+
+void BookManager::list() {
+    for (int i = 0; i < this->books->itemSet()->itemCount() ; ++i) {
+        Book *newBook = books->itemSet()->getValueAt(i)->getValue();
+        getInfo(newBook->getTitle());
     }
 }
 
