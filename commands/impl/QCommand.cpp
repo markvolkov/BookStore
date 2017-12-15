@@ -15,7 +15,8 @@ std::string QCommand::toString() {
 }
 
 void QCommand::execute(std::vector<std::string> args) {
-
+    std::cout<<"SHUTTING DOWN";
+    this->bookManager->quit();
 }
 
 std::string QCommand::getName() {

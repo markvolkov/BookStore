@@ -6,6 +6,8 @@
 #include "../dstrctures/map/ArrayMap.h"
 #include <fstream>
 #include <sstream>
+#include <iostream>
+
 
 BookManager::BookManager() {
     books = new ArrayMap<std::string, Book*>();
@@ -23,7 +25,6 @@ void BookManager::addBook(std::string title, int want, int stock) {
     }
     Book* newBook = new Book(title, want, stock);
     books->put(newBook->getTitle(), newBook);
-    std::cout << "Book has been added." << std::endl;
     return;
 }
 
@@ -34,8 +35,7 @@ void BookManager::sellBook(std::string title) {
             addBook(title, 0, 1);
             std::cout << title << " has been sold!" << std::endl;
         }
-    } catch(std::out_of_range e)
-    {
+    } catch(std::out_of_range e) {
         if (books->get(title)->getStockCount() < 1) {
             std::cout << "We currently do not have this book in stock! You will be added to the wait list" << std::endl;
             std::cout << "Please enter your Name: " << std::endl;
@@ -166,12 +166,14 @@ void BookManager::list() {
     std::cout << "Books being listed" << " Size: "<< books->itemSet()->itemCount() << std::endl;
     for (int i = 0; i < this->books->itemSet()->itemCount(); i++) {
         Book* ref = this->books->itemSet()->getValueAt(i)->getValue();
-        std::cout << "Title: "<<ref->getTitle()<<"," << " Stock: " << ref->getStockCount()<<"," << " Wish: "<<ref->getWishCount()<<"," << std::endl;
+        std::cout << "Title: "<<ref->getTitle()<<"," << " Stock: " << ref->getStockCount()<<"," << " Want: "<<ref->getWishCount()<<"," << std::endl;
     }
 }
 
 void BookManager::getInfo(std::string title, Book* toPrint) {
-    std::cout << toPrint->getTitle()<<" "<< toPrint->getWishCount() << " "<<toPrint->getStockCount()<<std::endl;
+    std::cout<<"Title: "<< toPrint->getTitle()<<std::endl;
+    std::cout<<"Stock: "<< toPrint->getStockCount()<<std::endl;
+    std::cout<<"Want: "<<toPrint->getWishCount()<<std::endl;
 
 }
 
@@ -198,6 +200,17 @@ void BookManager::modifyWant(std::string title, int newWant) {
     if (getBook(title) == nullptr) {
         std::cout << title << " That book does not exist in our inventory!" << std::endl;
     } else {
-        books->get(title)->addToStockCount(newWant);
+        books->get(title)->addToWishCount(newWant);
+        std::cout<<newWant<<" books have been added to "<<title<<"'s want list."<<std::endl;
     }
+}
+
+
+void BookManager::quit(){
+    std::ofstream booksF;
+    booksF.open("Inventory.txt");
+    booksF<<"Testing. \n";
+    booksF<<"000";
+    booksF.close();
+
 }

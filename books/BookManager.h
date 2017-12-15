@@ -24,6 +24,7 @@ public:
     Book* getBook(std::string title);
     void modifyStock(std::string title, int modifyStock);
     void modifyWant(std::string title, int newWant);
+    void quit();
 };
 
 

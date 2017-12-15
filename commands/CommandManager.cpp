@@ -43,7 +43,7 @@ bool CommandManager::addCommand(Command* command) {
     return true;
 }
 
-void CommandManager::executeCommand(std::string identifier, std::vector<string> args) {
+void CommandManager::executeCommand(std::string identifier, std::vector<std::string> args) {
     Command* command = commands->get(identifier);
     if (command != nullptr) {
         command->execute(args);
