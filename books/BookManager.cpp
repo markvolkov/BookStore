@@ -106,12 +106,13 @@ void BookManager::delivery(std::string fileIN) {
 
             //add book to the inventory
             int stock = std::stoi(stockS);
-            if(getBook(title)!= nullptr){
-                modifyStock(title,stock);
-            }
-            else {
-                addBook(title, 0, stock);
-            }
+//            if(getBook(title)!= nullptr){
+//                modifyStock(title,stock);
+//            }
+//            else {
+//                addBook(title, 0, stock);
+//            }
+            addBook(title,0,stock);
         }
     }
 }
