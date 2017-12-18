@@ -6,8 +6,6 @@
 #include "../dstrctures/map/ArrayMap.h"
 #include <fstream>
 #include <sstream>
-#include <iostream>
-
 
 BookManager::BookManager() {
     books = new ArrayMap<std::string, Book*>();

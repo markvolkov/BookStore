@@ -1,7 +1,8 @@
-book1,20,0
-book2,4,0
-book3,5,0
-book4,11,0
-book5,2,0
+Book1,3,10
+book1,0,0
+book2,0,0
+book3,0,0
+book4,0,0
+book5,0,0
 book6,-20,0
-book7,8,0
+book7,0,0
