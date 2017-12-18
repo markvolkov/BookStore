@@ -1,8 +1,0 @@
-Book1,3,10
-book1,0,0
-book2,0,0
-book3,0,0
-book4,0,0
-book5,0,0
-book6,-20,0
-book7,0,0

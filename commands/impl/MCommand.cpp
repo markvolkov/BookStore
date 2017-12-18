@@ -15,12 +15,25 @@ std::string MCommand::toString() {
     return mString;}
 
 void MCommand::execute(std::vector<std::string> args) {
-    std::cout<<"Enter how many more copies of "<<args[0]<< " do you need/want?"<<std::endl;
-    std::string want;
-    getline(std::cin, want);
-    int wantInt = std::stoi(want);
-    this->bookManager->modifyWant(args[0],wantInt);
-
+    if(this->bookManager->getBook(args[0])== nullptr){
+        std::cout<<"Error: This book does not exist. Add it using the A - Command."<<std::endl;
+    }
+    else {
+        std::cout<<"Current want value: "<<this->bookManager->getBook(args[0])->getWishCount()<<"."<<std::endl;
+        std::cout<<"Current stock value: "<<this->bookManager->getBook(args[0])->getStockCount()<<"."<<std::endl;
+        std::cout<<"Enter how many more copies of "<< args[0]<< " do you want?"<< std::endl;
+        std::string wantStr;
+        int want;
+        getline(std::cin, wantStr);
+        try {
+             want = std::stoi(wantStr);
+        } catch(std::invalid_argument){
+            std::cout<<"ERROR: Please enter an integer for the want value!"<<std::endl;
+            std::cout<<"Bringing you back to main menu!"<<std::endl;
+            return;
+        }
+        this->bookManager->modifyWant(args[0], want);
+    }
 }
 
 std::string MCommand::getName() {

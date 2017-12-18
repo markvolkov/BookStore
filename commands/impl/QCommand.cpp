@@ -15,8 +15,10 @@ std::string QCommand::toString() {
 }
 
 void QCommand::execute(std::vector<std::string> args) {
-    std::cout<<"SHUTTING DOWN...";
     this->bookManager->quit();
+    std::cout<<"Inventory has been saved."<<std::endl;
+    std::cout<<"Program is shutting down..."<<std::endl;
+
 }
 
 std::string QCommand::getName() {

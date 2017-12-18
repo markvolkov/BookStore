@@ -1,6 +1,4 @@
-book1,20
-book2,4
-book3,5
-book4,11
-book5,2
-book7,8
+shit,10
+fuck,3
+queefcity,3
+shutnsdf,6

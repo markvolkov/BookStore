@@ -70,7 +70,7 @@ void prompt(CommandManager *commandManager) {
 }
 
 int main() {
-    std::cout << "Welcome to your BookStore management system....";
+    std::cout << "Welcome to your BookStore management system!"<<std::endl;
 
     CommandManager *commandManager = new CommandManager();
     commandManager->loadCommands();

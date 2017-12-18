@@ -25,7 +25,9 @@ int Book::getStockCount(){
     return this->stockCount;
 }
 
-
+LinkedQueue<Customer*>* Book::getWaitList(){
+    return this->waitlist;
+}
 
 int Book::getWishCount(){ return this->wishCount; }
 
@@ -47,9 +49,10 @@ void Book::removeFromWishCount(int numCopies) {
 }
 
 void Book::enqueueWaitlist(Customer* customer){
+    waitlist->enqueue(customer);
 
 }
 
 Customer* Book::dequeueWaitlist(){
-   return dequeueWaitlist();
+   return waitlist->dequeue();
 }

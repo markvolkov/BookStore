@@ -1,2 +1,2 @@
-book6,101
-book9,101
+book6,20
+Crap,30

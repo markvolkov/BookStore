@@ -20,6 +20,7 @@ public:
     std::string getTitle();
     int getStockCount();
     int getWishCount();
+    LinkedQueue<Customer*>* getWaitList();
     void addToStockCount(int numCopies);
     void removeFromStockCount(int numCopies);
     void addToWishCount(int numCopies);

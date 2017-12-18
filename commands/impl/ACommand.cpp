@@ -13,24 +13,37 @@ ACommand::ACommand(std::string identifier, BookManager* bookManager) {
 }
 
 std::string ACommand::toString() {
-    std::string aString = "A - Command: Add Book (Title, Want, Have)";
+    std::string aString = "A - Command: Add Book (Title)";
     std::cout<<"IMPORTANT! Make sure there are spaces between the command and entries."<<std::endl;
     return aString;
 }
 
 void ACommand::execute(std::vector<std::string> args) {
     std::string title  =args [0];
-    std::string wantStr =args [1];
-    std::string needStr =args [2];
-    int want = std::stoi(wantStr);
-    int stock = std::stoi(needStr);
+    int stock;
+    int want;
+    std::cout << "Please enter how many copies of "<<title<<" you WANT: " << std::endl;
+    std::string wantStr;
+    getline(std::cin, wantStr);
+    std::cout << "Please enter how many copies of "<<title<<" you HAVE: " << std::endl;
+    std::string stockStr;
+    getline(std::cin, stockStr);
+
+    try {
+        stock = std::stoi(stockStr);
+        want = std::stoi(wantStr);
+    } catch(std::invalid_argument){
+        std::cout<<"ERROR: Please enter integers for the have/want value!"<<std::endl;
+        std::cout<<"Bringing you back to main menu!"<<std::endl;
+        return;
+    }
     this->bookManager->addBook(title,want,stock);
 
 
 }
 
 int ACommand::argumentCount() {
-    return 3;
+    return 1;
 }
 
 std::string ACommand::getName() {

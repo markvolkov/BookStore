@@ -35,11 +35,11 @@ std::string Customer::getPhoneNumber() {
 }
 
 std::string Customer::getEmail() {
-    return this->getEmail();
+    return this->email;
 }
 
 std::string Customer::getContactPreference() {
-    return this->getContactPreference();
+    return this->contactPref;
 }
 
 void Customer::setName(std::string name) {

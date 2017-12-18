@@ -14,9 +14,10 @@ private:
 public:
     BookManager();
     ~BookManager();
-    void addBook(std::string title, int want, int have);
+    void addBook(std::string title, int want, int stock);
     void sellBook(std::string title);
     void delivery(std::string fileName);
+    bool getWaitlist(std::string title);
     void placeOrder(std::string fileName);
     void returnF(std::string file);
     void list();
@@ -25,6 +26,7 @@ public:
     void modifyStock(std::string title, int modifyStock);
     void modifyWant(std::string title, int newWant);
     void loadBooks();
+    void loadBook(std::string title, int want, int stock);
     void quit();
 };
 

@@ -25,6 +25,7 @@ CommandManager::CommandManager() {
 CommandManager::~CommandManager() {
     for (int i = 0; i < this->commands->itemSet()->itemCount(); i++) {
         delete this->commands->itemSet()->getValueAt(i);
+        commands= nullptr;
     }
     delete this->commands;
 }
@@ -74,5 +75,7 @@ void CommandManager::loadCommands() {
     addCommand(sCommand);
 }
 void CommandManager::loadInventory() {
+    std::cout<<"Loading Books..."<<std::endl;
     this->bookManager->loadBooks();
+
 }

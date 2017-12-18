@@ -22,18 +22,18 @@ void BookManager::addBook(std::string title, int want, int stock) {
         getInfo(title,book);
         book = nullptr;
         delete book;
+        book= nullptr;
         return;
     }
     Book* newBook = new Book(title, want, stock);
     books->put(newBook->getTitle(), newBook);
     std::cout<<title<<" has been added to our inventory!"<<std::endl;
-    return;
 }
 void BookManager::sellBook(std::string title) {
-
         if(getBook(title) == nullptr) {
             addBook(title, 0, 1);
             std::cout << title << " has been sold!" << std::endl;
+            return;
         }
         if (books->get(title)->getStockCount() < 1) {
             std::cout << "We currently do not have this book in stock! You will be added to the wait list" << std::endl;
@@ -52,6 +52,9 @@ void BookManager::sellBook(std::string title) {
 
             Customer *newCustomer = new Customer(name, number, email, pref);
             books->get(title)->enqueueWaitlist(newCustomer);
+            std::cout << "You have been added to this books waitlist!" << std::endl;
+            modifyWant(title,-1);
+            return;
 
         } else {
             std::cout<<title<<" has been sold!";
@@ -78,34 +81,59 @@ void BookManager::delivery(std::string fileIN) {
     }
     else{
         //loop until there are no more lines
-        while(std::getline(delieryIn,line)){
+        while(std::getline(delieryIn,line)) {
 
             //split the title and the stock by a comma
             std::stringstream oneLine(line);
             std::string word;
             //variable that will allows us to determine if it is the title or the author
-            int count=0;
+            int count = 0;
 
             //title / stock that will be collected from breaking up each individual line
             std::string title;
             std::string stockS;
 
             //loops through each line and seperates the words by comma
-            while(std::getline(oneLine,word,delimeter)){
-                if(count==0){
-                    title=word;
+            while (std::getline(oneLine, word, delimeter)) {
+                if (count == 0) {
+                    title = word;
                 }
-                if(count==1){
-                    stockS=word;
+                if (count == 1) {
+                    stockS = word;
                 }
-                count+=1;
+                count += 1;
             }
 
+//            int waitlistCount = 0;
+//            while(getWaitlist(title)) {
+//                waitlistCount++;
+//            }
             //add book to the inventory
             int stock = std::stoi(stockS);
-            addBook(title,0,stock);
+            addBook(title, 0, stock);
+
+
         }
     }
+
+}
+//TODO
+bool BookManager::getWaitlist(std::string title) {
+    if (getBook(title)!= nullptr){
+        if(!getBook(title)->getWaitList()->isEmpty()) {
+            std::cout << "This book has a waitlist!" << std::endl;
+            Customer *customerToDequeue = getBook(title)->dequeueWaitlist();
+            std::cout << "Customer's Name: " << customerToDequeue->getName() << std::endl;
+            if (customerToDequeue->getContactPreference() == "phone") {
+                std::cout << "Preferes to be contacted by phone: " << customerToDequeue->getPhoneNumber() << std::endl;
+            } else {
+                std::cout << "Preferes to be contacted by email: " << customerToDequeue->getEmail() << std::endl;
+                return true;
+            }
+        }
+        else{return false;}
+    }
+    return false;
 }
 void BookManager::placeOrder(std::string fileName) {
     std::cout << "Placing Order..." << std::endl;
@@ -123,7 +151,7 @@ void BookManager::placeOrder(std::string fileName) {
 
         //checks to see if the stock is less than want
         if(want>stock){
-            int orderAmount = want-stock+1;
+            int orderAmount = want-stock;
             //writes to 'order.txt' title,OrderAmout
             myFile<<title<<","<<orderAmount<<"\n";
         }
@@ -193,10 +221,9 @@ void BookManager::modifyWant(std::string title, int newWant) {
         std::cout << title << " That book does not exist in our inventory!" << std::endl;
     } else {
         books->get(title)->addToWishCount(newWant);
-        std::cout<<newWant<<" books have been added to "<<title<<"'s want list."<<std::endl;
+//        std::cout<<newWant<<" books have been added to "<<title<<"'s want list."<<std::endl;
     }
 }
-
 void BookManager::loadBooks() {
     //creates a variable to deal with the file
     std::ifstream delieryIn("inventory.txt");
@@ -213,46 +240,63 @@ void BookManager::loadBooks() {
     }
     else{
         //loop until there are no more lines
-        while(std::getline(delieryIn,line)){
+            while (std::getline(delieryIn, line)) {
 
-            //split the title and the stock by a comma
-            std::stringstream oneLine(line);
-            std::string word;
-            //variable that will allows us to determine if it is the title or the author
-            int count=0;
+                //split the title and the stock by a comma
+                std::stringstream oneLine(line);
+                std::string word;
+                //variable that will allows us to determine if it is the title or the author
+                int count = 0;
 
-            //title / stock that will be collected from breaking up each individual line
-            std::string title;
-            std::string stockS;
-            std::string wantS;
+                //title / stock that will be collected from breaking up each individual line
+                std::string title;
+                std::string stockS;
+                std::string wantS;
 
-            //loops through each line and seperates the words by comma
-            while(std::getline(oneLine,word,delimeter)){
-                if(count==0){
-                    title=word;
+                //loops through each line and seperates the words by comma
+                while (std::getline(oneLine, word, delimeter)) {
+                    if (count == 0) {
+                        title = word;
+                    }
+                    if (count == 1) {
+                        stockS = word;
+                    }
+                    if (count == 2) {
+                        wantS = word;
+                    }
+                    count += 1;
                 }
-                if(count==1){
-                    stockS=word;
-                }
-                if(count==2){
-                    wantS=word;
-                }
-                count+=1;
+
+                //add book to the inventory
+                int stock = std::stoi(stockS);
+                int want = std::stoi(wantS);
+                loadBook(title, want, stock);
             }
-
-            //add book to the inventory
-            int stock = std::stoi(stockS);
-            int want = std::stoi(wantS);
-            addBook(title,want,stock);
-        }
+            std::cout<<"All books have been loaded."<<std::endl;
     }
 
 }
+void BookManager::loadBook(std::string title, int want, int stock) {
+    if (getBook(title) != nullptr) {
+        std::cout << "A book with that title already exists!" << std::endl;
+        std::cout<<"Updating stock count!"<<std::endl;
+        modifyStock(title,stock);
+        Book* book = getBook(title);
+        getInfo(title,book);
+        book = nullptr;
+        delete book;
+        book= nullptr;
+        return;
+    }
+    Book* newBook = new Book(title, want, stock);
+    books->put(newBook->getTitle(), newBook);
 
+}
 void BookManager::quit(){
     std::ofstream myFile;
     myFile.open("inventory.txt");
-    for (int i = 0; i < this->books->itemSet()->itemCount() ; ++i) {
+    for (int i = 0; i < this->books->itemSet()->itemCount() ; ++i)
+    {
         int want = this->books->itemSet()->getValueAt(i)->getValue()->getWishCount();
         int stock = this->books->itemSet()->getValueAt(i)->getValue()->getStockCount();
         std::string title = this->books->itemSet()->getValueAt(i)->getValue()->getTitle();
