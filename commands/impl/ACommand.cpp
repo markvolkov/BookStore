@@ -14,7 +14,7 @@ ACommand::ACommand(std::string identifier, BookManager* bookManager) {
 
 std::string ACommand::toString() {
     std::string aString = "A - Command: Add Book (Title, Want, Have)";
-    std::cout<<"IMPORTANT! Make sure there are spaces in between the entries"<<std::endl;
+    std::cout<<"IMPORTANT! Make sure there are spaces between the command and entries."<<std::endl;
     return aString;
 }
 
@@ -24,9 +24,8 @@ void ACommand::execute(std::vector<std::string> args) {
     std::string needStr =args [2];
     int want = std::stoi(wantStr);
     int stock = std::stoi(needStr);
-    std::cout << "Title: " << title << " Want: " << wantStr << " Stock: " << needStr << std::endl;
     this->bookManager->addBook(title,want,stock);
-    std::cout<<args[0]<<" added to the inventory with "<< args[1]<<" amount of copies in stock";
+
 
 }
 

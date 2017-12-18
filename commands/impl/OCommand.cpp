@@ -12,6 +12,7 @@ OCommand::OCommand(std::string identifier, BookManager* bookManager) {
 
 std::string OCommand::toString() {
     std::string oString = "O - Command: Order Books";
+    std::cout<<"IMPORTANT! Make sure there is a space between the command and entry."<<std::endl;
     return oString;
 }
 

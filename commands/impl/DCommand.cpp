@@ -2,10 +2,6 @@
 // Created by brien pacholec on 12/5/17.
 //
 
-#include <cstring>
-#include <iostream>
-#include <fstream>
-#include <sstream>
 #include "DCommand.h"
 
 
@@ -22,7 +18,8 @@ DCommand::DCommand(std::string identifier, BookManager* bookManager) {
 }
 
 std::string DCommand::toString() {
-    std::string dString = "D - Command: Delivery Of Books";
+    std::string dString = "D - Command: (Delivery Of Books)";
+    std::cout<<"IMPORTANT! Make sure there is a space between the command and entry."<<std::endl;
     return dString;
 }
 

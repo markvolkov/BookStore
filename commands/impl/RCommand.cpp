@@ -11,6 +11,8 @@ RCommand::RCommand(std::string identifier, BookManager* bookManager) {
 
 std::string RCommand::toString() {
     std::string rString = "R - Command: Return";
+    std::cout<<"IMPORTANT! Make sure there is a space between the command and entry."<<std::endl;
+
     return rString;
 }
 

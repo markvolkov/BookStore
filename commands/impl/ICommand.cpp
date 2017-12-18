@@ -10,14 +10,13 @@ ICommand::ICommand(std::string identifier, BookManager* bookManager) {
 }
 
 std::string ICommand::toString() {
-    std::string iString = "I - Command: Inquire Information";
-    std::cout<<"IMPORTANT! Make sure you type in the Title"<<std::endl;
+    std::string iString = "I - Command: (Inquire Information On Title)";
+    std::cout<<"IMPORTANT! Make sure there is a space between the command and entry."<<std::endl;
     return iString;
 }
 
 void ICommand::execute(std::vector<std::string> args){
     std::string title = args[0];
-    std::cout << "Inquire: " << title << std::endl;
     this->bookManager
             ->getInfo
                     (args[0],

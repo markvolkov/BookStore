@@ -15,6 +15,7 @@ int SCommand::argumentCount() {
 
 std::string SCommand::toString() {
     std::string sString = "S - Command: Sell Book";
+    std::cout<<"IMPORTANT! Make sure there is a space between the command and entry."<<std::endl;
     return sString;
 }
 
