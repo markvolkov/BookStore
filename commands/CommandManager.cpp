@@ -72,7 +72,7 @@ void CommandManager::loadCommands() {
     addCommand(rCommand);
     Command* sCommand = new SCommand("s", this->bookManager);
     addCommand(sCommand);
-
-
-
+}
+void CommandManager::loadInventory() {
+    this->bookManager->loadBooks();
 }

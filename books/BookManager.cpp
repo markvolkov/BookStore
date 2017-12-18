@@ -150,33 +150,7 @@ void BookManager::returnF(std::string fileName) {
         }
     }
     myFile.close();
-//    for (int i = 0; i < books->itemSet()->itemCount(); ++i) {
-//        Book *newBook = books->itemSet()->getValueAt(i)->getValue();
-//        int want = newBook->getWishCount();
-//        int have = newBook->getStockCount();
-//        std::string title = newBook->getTitle();
-//        if (have > want) {
-//            int returnAmount = have - want;
-//            modifyStock(title, -returnAmount);
-//            std::string bookOrder = title + "|" + std::to_string(returnAmount);
-//            std::ofstream fout(fileName);
-//            if (fout) {
-//                std::stringstream parts(bookOrder);
-//                while (parts) {
-//                    std::string part;
-//                    getline(parts, part);
-//                    fout << part << std::endl;
-//                }
-//
-//                fout.close();
-//            } else {
-//                std::cout << "Error in opening file";
-//            }
-//        }
-//
-//    }
-}
-void BookManager::quit(){
+
 }
 
 void BookManager::list() {
@@ -218,5 +192,69 @@ void BookManager::modifyWant(std::string title, int newWant) {
         books->get(title)->addToWishCount(newWant);
         std::cout<<newWant<<" books have been added to "<<title<<"'s want list."<<std::endl;
     }
+}
+
+void BookManager::loadBooks() {
+    //creates a variable to deal with the file
+    std::ifstream delieryIn("inventory.txt");
+    //creates a string that will represent the line we are looking at
+    std::string line;
+    //creates a delimeter that will sperate information on line
+    char delimeter = ',';
+
+
+    //if the file cannot open, the program will prompt the user and the function will end
+    if(delieryIn.fail()){
+        std::cout<<"ERROR: There was an issues opening the file."<<std::endl;
+        return;
+    }
+    else{
+        //loop until there are no more lines
+        while(std::getline(delieryIn,line)){
+
+            //split the title and the stock by a comma
+            std::stringstream oneLine(line);
+            std::string word;
+            //variable that will allows us to determine if it is the title or the author
+            int count=0;
+
+            //title / stock that will be collected from breaking up each individual line
+            std::string title;
+            std::string stockS;
+            std::string wantS;
+
+            //loops through each line and seperates the words by comma
+            while(std::getline(oneLine,word,delimeter)){
+                if(count==0){
+                    title=word;
+                }
+                if(count==1){
+                    stockS=word;
+                }
+                if(count==2){
+                    wantS=word;
+                }
+                count+=1;
+            }
+
+            //add book to the inventory
+            int stock = std::stoi(stockS);
+            int want = std::stoi(wantS);
+            addBook(title,want,stock);
+        }
+    }
+
+}
+
+void BookManager::quit(){
+    std::ofstream myFile;
+    myFile.open("inventory.txt");
+    for (int i = 0; i < this->books->itemSet()->itemCount() ; ++i) {
+        int want = this->books->itemSet()->getValueAt(i)->getValue()->getWishCount();
+        int stock = this->books->itemSet()->getValueAt(i)->getValue()->getStockCount();
+        std::string title = this->books->itemSet()->getValueAt(i)->getValue()->getTitle();
+        myFile << title << "," << stock << "," << want << "\n";
+    }
+    myFile.close();
 }
 

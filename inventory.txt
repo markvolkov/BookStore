@@ -1,0 +1,10 @@
+book1,80,0
+book2,16,0
+book3,20,0
+book4,44,0
+book5,8,0
+book6,-100,0
+book7,32,0
+book8,100,0
+book9,100,200
+book10,400,300

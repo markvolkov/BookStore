@@ -40,13 +40,17 @@ void prompt(CommandManager *commandManager) {
     std::string command;
     while (args.size() == size) {
         command = args[0];
+        Command* toExecute = commandManager->getCommand(command);
         if (command == "q" || command == "quit") {
+
+            toExecute->execute(args);
             delete commandManager;
             commandManager = nullptr;
+            delete toExecute;
+            toExecute= nullptr;
             break;
         }
-        Command* toExecute = commandManager->getCommand(command);
-        if (toExecute != nullptr) {
+        else if (toExecute != nullptr) {
             if (args.size()-1 != toExecute->argumentCount()) {
                 std::cout << "Invalid arguments..." << std::endl;
                 std::cout << toExecute->toString() << std::endl;
@@ -70,6 +74,7 @@ int main() {
 
     CommandManager *commandManager = new CommandManager();
     commandManager->loadCommands();
+    commandManager->loadInventory();
     prompt(commandManager);
     return 0;
 

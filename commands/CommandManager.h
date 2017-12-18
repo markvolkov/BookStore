@@ -21,6 +21,7 @@ public:
     bool addCommand(Command* command);
     void executeCommand(std::string identifier, std::vector<std::string> args);
     void loadCommands();
+    void loadInventory();
 };
 
 
