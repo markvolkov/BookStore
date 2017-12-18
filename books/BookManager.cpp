@@ -137,7 +137,7 @@ void BookManager::placeOrder(std::string fileName) {
 }
 void BookManager::returnF(std::string fileName) {
     std::ofstream myFile;
-    myFile.open(fileName);
+    myFile.open("return.txt");
 
     for (int i = 0; i < this->books->itemSet()->itemCount() ; ++i) {
         int want = this->books->itemSet()->getValueAt(i)->getValue()->getWishCount();
@@ -152,11 +152,16 @@ void BookManager::returnF(std::string fileName) {
     myFile.close();
 
 }
-
 void BookManager::list() {
-    for (int i = 0; i < this->books->itemSet()->itemCount(); i++) {
-        Book* ref = this->books->itemSet()->getValueAt(i)->getValue();
-        std::cout << "Title: "<<ref->getTitle()<<"," << " Stock: " << ref->getStockCount()<<"," << " Want: "<<ref->getWishCount() << std::endl;
+    if(this->books->itemSet()->itemCount()==0){
+        std::cout<<"There are no books in the inventory!"<<std::endl;
+    }
+    else {
+        for (int i = 0; i < this->books->itemSet()->itemCount(); i++) {
+            Book *ref = this->books->itemSet()->getValueAt(i)->getValue();
+            std::cout << "Title: " << ref->getTitle() << "," << " Stock: " << ref->getStockCount() << "," << " Want: "
+                      << ref->getWishCount() << std::endl;
+        }
     }
 }
 void BookManager::getInfo(std::string title, Book* toPrint) {
