@@ -136,31 +136,45 @@ void BookManager::placeOrder(std::string fileName) {
 
 }
 void BookManager::returnF(std::string fileName) {
-    for (int i = 0; i < books->itemSet()->itemCount(); ++i) {
-        Book *newBook = books->itemSet()->getValueAt(i)->getValue();
-        int want = newBook->getWishCount();
-        int have = newBook->getStockCount();
-        std::string title = newBook->getTitle();
-        if (have > want) {
-            int returnAmount = have - want;
-            modifyStock(title, -returnAmount);
-            std::string bookOrder = title + "|" + std::to_string(returnAmount);
-            std::ofstream fout(fileName);
-            if (fout) {
-                std::stringstream parts(bookOrder);
-                while (parts) {
-                    std::string part;
-                    getline(parts, part);
-                    fout << part << std::endl;
-                }
+    std::ofstream myFile;
+    myFile.open(fileName);
 
-                fout.close();
-            } else {
-                std::cout << "Error in opening file";
-            }
+    for (int i = 0; i < this->books->itemSet()->itemCount() ; ++i) {
+        int want = this->books->itemSet()->getValueAt(i)->getValue()->getWishCount();
+        int stock = this->books->itemSet()->getValueAt(i)->getValue()->getStockCount();
+        std::string title = this->books->itemSet()->getValueAt(i)->getValue()->getTitle();
+        if(stock>want){
+            int newStock = stock-want;
+            modifyStock(title,-newStock);
+            myFile<<title<<","<<stock<<"\n";
         }
-
     }
+    myFile.close();
+//    for (int i = 0; i < books->itemSet()->itemCount(); ++i) {
+//        Book *newBook = books->itemSet()->getValueAt(i)->getValue();
+//        int want = newBook->getWishCount();
+//        int have = newBook->getStockCount();
+//        std::string title = newBook->getTitle();
+//        if (have > want) {
+//            int returnAmount = have - want;
+//            modifyStock(title, -returnAmount);
+//            std::string bookOrder = title + "|" + std::to_string(returnAmount);
+//            std::ofstream fout(fileName);
+//            if (fout) {
+//                std::stringstream parts(bookOrder);
+//                while (parts) {
+//                    std::string part;
+//                    getline(parts, part);
+//                    fout << part << std::endl;
+//                }
+//
+//                fout.close();
+//            } else {
+//                std::cout << "Error in opening file";
+//            }
+//        }
+//
+//    }
 }
 void BookManager::quit(){
 }
