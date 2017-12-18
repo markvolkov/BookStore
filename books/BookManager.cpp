@@ -6,7 +6,7 @@
 #include "../dstrctures/map/ArrayMap.h"
 #include <fstream>
 #include <sstream>
-#include <string>
+#include <iostream>
 
 
 BookManager::BookManager() {
@@ -62,7 +62,6 @@ void BookManager::sellBook(std::string title) {
 
 
 }
-
 void BookManager::delivery(std::string fileIN) {
     //TODO
 
@@ -106,42 +105,33 @@ void BookManager::delivery(std::string fileIN) {
 
             //add book to the inventory
             int stock = std::stoi(stockS);
-//            if(getBook(title)!= nullptr){
-//                modifyStock(title,stock);
-//            }
-//            else {
-//                addBook(title, 0, stock);
-//            }
             addBook(title,0,stock);
         }
     }
 }
 void BookManager::placeOrder(std::string fileName) {
     std::cout << "Placing Order..." << std::endl;
-    for (int i = 0; i < books->itemSet()->itemCount(); ++i) {
-        Book *newBook = books->itemSet()->getValueAt(i)->getValue();
-        int want = newBook->getWishCount();
-        int stock = newBook->getStockCount();
-        std::string title = newBook->getTitle();
-        if (want > stock) {
-            int orderAmount = want - stock;
 
-            std::string bookOrder = title + "|" + std::to_string(orderAmount);
-            std::ofstream fout(fileName);
-            if (fout) {
-                std::stringstream parts(bookOrder);
-                while (parts) {
-                    std::string part;
-                    getline(parts, part);
-                    fout << part << std::endl;
-                }
+    //create a file that will be written on
+    std::ofstream myFile;
+    myFile.open(fileName);
 
-                fout.close();
-            } else {
-                std::cout << "Error in opening file";
-            }
+
+    //goes through the list of books
+    for (int i = 0; i < this->books->itemSet()->itemCount(); ++i) {
+        int want = this->books->itemSet()->getValueAt(i)->getValue()->getWishCount();
+        int stock = this->books->itemSet()->getValueAt(i)->getValue()->getStockCount();
+        std::string title = this->books->itemSet()->getValueAt(i)->getValue()->getTitle();
+
+        //checks to see if the stock is less than want
+        if(want>stock){
+            int orderAmount = want-stock+1;
+            //writes to 'order.txt' title,OrderAmout
+            myFile<<title<<","<<orderAmount<<"\n";
         }
     }
+    myFile.close();
+    std::cout<<"Order has been placed!"<<std::endl;
 
 
 }
@@ -178,7 +168,7 @@ void BookManager::quit(){
 void BookManager::list() {
     for (int i = 0; i < this->books->itemSet()->itemCount(); i++) {
         Book* ref = this->books->itemSet()->getValueAt(i)->getValue();
-        std::cout << "Title: "<<ref->getTitle()<<"," << " Stock: " << ref->getStockCount()<<"," << " Want: "<<ref->getWishCount()<<"," << std::endl;
+        std::cout << "Title: "<<ref->getTitle()<<"," << " Stock: " << ref->getStockCount()<<"," << " Want: "<<ref->getWishCount() << std::endl;
     }
 }
 void BookManager::getInfo(std::string title, Book* toPrint) {
