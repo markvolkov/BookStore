@@ -1,0 +1,19 @@
+BEFORE YOU USE THIS PROGRAM READ THE RULES AND REGULATIONS:
+
+A.) COMMANDS
+    All of these commands require arguments. Put one space between the command and the argument(s).
+    If there is more than one argument, put spaces between the arguments.
+        -Inquire(i) = title
+        -Add(a) = title, want, stock
+        -Modify(m) = title
+        -Sell(s) = title
+        -Order(o) = what you want to name your order file (ex:"order.txt")
+        -Delivery(d) = the name of your delivery file (ex:"delivery.txt")
+        -Return(r) = what you want to name your invoice file (ex:"return.txt")
+
+    These commands do not require any arguments.
+        -Help(h)
+        -List(l)
+        -Quit(q)
+
+B.)
