@@ -19,13 +19,25 @@ void LinkedQueue<T>::enqueue(T item) {
     list->insertAtEnd(item);
 }
 
-template<class T>
+/*template<class T>
 T LinkedQueue<T>::dequeue() {
     if (!isEmpty()) {
         return list->getValueAt(0);
     } else {
         throw std::out_of_range("Queue is empty!");
     }
+}*/
+
+template<class T>
+T LinkedQueue<T>::dequeue() {
+    if (!isEmpty()) {
+        T item = list->getValueAt(0);
+        list->removeValueAt(0);
+        return item;
+        }
+        else {
+            throw std::out_of_range("Queue is empty!");
+        }
 }
 
 template<class T>

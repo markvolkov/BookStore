@@ -19,7 +19,24 @@ void BookManager::addBook(std::string title, int want, int stock) {
         std::cout<<"Updating stock count!"<<std::endl;
         modifyStock(title,stock);
         Book* book = getBook(title);
-        getInfo(title,book);
+        //getInfo(title,book);
+
+        //if theres people on the waitlist and there's enough in stock
+        //the book and customer information is printed out
+        if (book->getWishCount() < 0 && (book->getStockCount() >= std::abs(book->getWishCount()))){
+            for (int i=0; i < std::abs(book->getWishCount());i++){
+                std::cout << "-------------------"<< std::endl;
+                Customer* customer = book->dequeueWaitlist();
+                std::cout << title + " should be put on hold for " + customer->getName() + ". Contact info: " << std::endl;
+                std::cout << "Phone: " + customer->getPhoneNumber()  << std::endl;
+                std::cout << "Email: " + customer->getEmail()  << std::endl;
+                modifyWant(title,1);
+                modifyStock(title,-1);
+                getInfo(title,book);
+                std::cout << "-------------------"<< std::endl;
+            }
+        }
+
         book = nullptr;
         delete book;
         book= nullptr;
