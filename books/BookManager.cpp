@@ -134,7 +134,6 @@ void BookManager::delivery(std::string fileIN) {
     }
 
 }
-//TODO
 bool BookManager::getWaitlist(std::string title) {
     if (getBook(title)!= nullptr){
         if(!getBook(title)->getWaitList()->isEmpty()) {

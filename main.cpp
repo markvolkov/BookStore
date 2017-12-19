@@ -42,6 +42,7 @@ void prompt(CommandManager *commandManager) {
         command = args[0];
         Command *toExecute = commandManager->getCommand(command);
         if (command == "q" || command == "quit") {
+            toExecute->execute(args);
             delete commandManager;
             commandManager = nullptr;
             toExecute = nullptr;
